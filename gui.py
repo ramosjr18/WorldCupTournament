@@ -18,8 +18,6 @@ class App(customtkinter.CTk):
         # configure window
         self.title("World Cup Tournament")
         self.geometry(f"{914}x{601}")
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./img")
-        self.image_icon_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo.png")), size=(20, 20))
 
         # configure grid layout (4x4)
         self.grid_columnconfigure((4), weight=1)
