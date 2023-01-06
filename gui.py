@@ -17,7 +17,7 @@ class App(customtkinter.CTk):
         # configure window
         self.title("World Cup Tournament")
         self.geometry(f"{914}x{601}")
-        self.iconbitmap("logo.png")
+        self.iconbitmap("")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure((4), weight=1)
