@@ -1,20 +1,20 @@
-class Round16():
+class Qfinal():
 
     def __init__(self):
         
-        self.round16 = []
+        self.qfinal = []
         self.result = []
 
 
-    def addteams(self,group):
-        for team in group.winner():
-            self.round16.append(team)
+    def addteams(self,round16):
+        for team in round16.winners():
+            self.qfinal.append(team)
         self.result.append({"Goals":0,"Won":False})
     
     def addresult(self,team,goal,won):
         
-        for i in range(len(self.round16)):
-            if team.country_getter == self.round16[i].country_getter:
+        for i in range(len(self.qfinal)):
+            if team.country_getter == self.qfinal[i].country_getter:
                 self.result[i]["Goals"] = goal
                 self.result[i]["Won"] = won
     
@@ -23,5 +23,5 @@ class Round16():
         winners = []
         for i in range(len(self.result)):
             if self.result[i]["Won"]:
-                winners.append(self.round16[i])
+                winners.append(self.qfinal[i])
         return winners
