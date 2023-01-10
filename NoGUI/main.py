@@ -55,6 +55,8 @@ def matches_per_group(groups) -> dict:
         groups_matches[groups[group].groupName()] = generate_matches(groups[group])
     return groups_matches
 
+def select_group(group_name):
+    
 
 def app() -> None:
     groups = create_groups()
@@ -83,8 +85,10 @@ def app() -> None:
                 print(" 1. Groups")
                 select_2 = input("Option: ")
                 if select_2 == "1":
-                    print(matches_per_group(groups))
-                    break
+                    print(" Select a group: ")
+                    group = input(" A, B, C, D, E, F, G or H")
+                    if group == "A":
+
         else:
             break
         os.system('cls')
