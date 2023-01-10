@@ -26,7 +26,7 @@ def assign_random_team(teams, groups) -> None:
         groups.get(random_group).add_team(team)
 
 #this method gets the input from the user to create the 32 teams
-def add_teams_list(lst, groups) -> None:
+def add_teams_list(lst, groups, matches) -> None:
     while len(lst) < 32:
         new_team = input("Introduce the next team: ")
         if new_team == "exit" or new_team == "EXIT" or new_team == "Exit":
@@ -42,9 +42,11 @@ def add_teams_list(lst, groups) -> None:
     #si, sé que es un bug, si el usuario se equivoca escribiendo el último equipo está pendejo y ya que lo mame
     if len(lst) == 32:
         assign_random_team(lst, groups)
+        matches_per_group(groups, matches)
+
 
 #this method generates the matches from the group phase
-def generate_matches(group) -> list:
+def generate_matches(group, matches) -> None:
     #the matches list saves the different matches combinations per group, each one has 6
     matches = []
     #used teams just makes sure a team doesn't play against itself and the matches don't repeat
@@ -61,20 +63,20 @@ def generate_matches(group) -> list:
     return matches
 
 #this repeats the last method but for every group
-def matches_per_group(groups) -> dict:
+def matches_per_group(groups, groups_matches) -> None:
     groups_matches = {}
     for group in groups:
         groups_matches[groups[group].groupName()] = generate_matches(groups[group])
-    return groups_matches
 
 #this method is meant to show the user the matches per group so the user can select the match and give the score
 def select_group(groups_matches, group_name):
-    return groups_matches[group_name]
+    for matches in range(groups_matches):
+        print
 
 def app() -> None:
     groups = create_groups()
     lst = []
-    group_fase_matches = {}
+    group_phase_matches = {}
     while True:
         print("Choose wisely:")
         if not lst:
@@ -89,7 +91,7 @@ def app() -> None:
         
         select = input("Option: ")
         if select == "1":
-            add_teams_list(lst, groups)
+            add_teams_list(lst, groups, group_phase_matches)
         elif select == "2":
             if len(lst) < 32:
                 print("Finish entering the teams first, u dumbas")
@@ -100,7 +102,12 @@ def app() -> None:
                 select_2 = input("Option: ")
                 if select_2 == "1":
                     print(" Select a group: ")
-                    group = input(" A, B, C, D, E, F, G or H")
+                    group_input = input(" A, B, C, D, E, F, G or H")
+                    try:
+                        select_group(group_phase_matches, group_input)
+                    except:
+                        print("that shit dont exist")
+                        continue
                     
                     
 
