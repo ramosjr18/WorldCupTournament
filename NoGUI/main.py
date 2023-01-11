@@ -64,14 +64,13 @@ def generate_matches(group, matches) -> None:
 
 #this repeats the last method but for every group
 def matches_per_group(groups, groups_matches) -> None:
-    groups_matches = {}
     for group in groups:
-        groups_matches[groups[group].groupName()] = generate_matches(groups[group])
+        groups_matches[groups[group].groupName()] = generate_matches(groups[group], groups_matches)
 
 #this method is meant to show the user the matches per group so the user can select the match and give the score
 def select_group(groups_matches, group_name):
-    for matches in range(groups_matches):
-        print
+    for matches in range(groups_matches[group_name]):
+        print(matches)
 
 def app() -> None:
     groups = create_groups()
