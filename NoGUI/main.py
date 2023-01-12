@@ -22,7 +22,10 @@ def get_random_group(groups) -> str:
 #this functions acts as a medium taking the list of teams and the list of groups
 def assign_random_team(teams, groups) -> None:
     for team in teams:
-        random_group = get_random_group(groups)
+        try:
+            random_group = get_random_group(groups)
+        except:
+            random_group = get_random_group(groups)
         groups.get(random_group).add_team(team)
 
 #this method gets the input from the user to create the 32 teams
