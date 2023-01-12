@@ -68,11 +68,15 @@ def matches_per_group(groups, groups_matches) -> None:
         groups_matches[groups[group].groupName()] = generate_matches(groups[group], groups_matches)
 
 #this method is meant to show the user the matches per group so the user can select the match and give the score
-def select_group(groups_matches, group_name):
-    for matches in range(groups_matches[group_name]):
-        print(matches)
+def select_group(groups_matches, group_name) -> list:
+    matches = []
+    for match in groups_matches[group_name]:
+        matches.append(match)
+    return matches
+        
 
 def app() -> None:
+    #falta poner un try aquí porque a veces se putea la recursion
     groups = create_groups()
     lst = []
     group_phase_matches = {}
@@ -101,18 +105,23 @@ def app() -> None:
                 select_2 = input("Option: ")
                 if select_2 == "1":
                     print(" Select a group: ")
-                    group_input = input(" A, B, C, D, E, F, G or H")
-                    try:
-                        select_group(group_phase_matches, group_input)
-                    except:
-                        print("that shit dont exist")
-                        continue
-                    
+                    group_input = input(" A, B, C, D, E, F, G or H:\n")
+                    matches_temp = select_group(group_phase_matches, group_input)
+                    os.system('cls')
+                    print("Select a match:")
+                    for index in range(len(matches_temp)):
+                        print(index + 1, matches_temp[index])
+                    match_input = input("Option: ")
+                    print("Introduce the score:")
+                    score_input_A = input(matches_temp[int(match_input)][: matches_temp[int(match_input)].find("VS")].strip() + ": ")
+                    score_input_B = input(matches_temp[int(match_input)][matches_temp[int(match_input)].find("VS") + 2:].strip() + ": ")
+
+
                     
 
         else:
             break
-        os.system('cls')
+        #os.system('cls')
     
 
 app()
