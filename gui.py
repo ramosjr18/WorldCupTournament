@@ -77,13 +77,13 @@ class App(customtkinter.CTk):
         self.inslabel = customtkinter.CTkLabel(self.home_Frame, text="More Instructions about this app's use")
         self.inslabel.grid(row=1, column=1, columnspan=2, padx=(20, 20), pady=(10, 10))
         #bottom buttom to continue adding teams        
-        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Boton", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Add Teams", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
         self.main_button_1.grid(row=2, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
         #bottom buttom to continue adding teams        
-        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Next", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Add Group Etage \n Results", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
         self.main_button_1.grid(row=3, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
         #bottom buttom to continue adding teams        
-        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Nt", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="donut", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
         self.main_button_1.grid(row=4, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
 
         #Group etage Frame
