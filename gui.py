@@ -17,7 +17,7 @@ class App(customtkinter.CTk):
         # configure window
         self.title("World Cup Tournament")
         self.geometry(f"{914}x{601}")
-        # self.iconbitmap("./logoico.ico")
+        self.iconbitmap("logoico.ico")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure((4), weight=1)
@@ -70,24 +70,60 @@ class App(customtkinter.CTk):
         #Home Frame
         self.home_Frame = customtkinter.CTkFrame(self)
         self.home_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
-        self.home_Frame.grid_columnconfigure(0, weight=1)
-        self.home_Frame.grid_rowconfigure((1,2), weight=1)
-        self.seg_button_1 = customtkinter.CTkLabel(self.home_Frame, text="Instructions")
-        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
-        self.teamEntry = customtkinter.CTkEntry(self.home_Frame)
-        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20))
-        self.teamEntry.grid_columnconfigure(5, weight=1)
+        self.home_Frame.grid_columnconfigure((0,1,2,3), weight=1)
+        self.home_Frame.grid_rowconfigure((1,2,3,4,5), weight=1)
+        self.TittleLabel = customtkinter.CTkLabel(self.home_Frame, text="Instructions", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.TittleLabel.grid(row=0, column=1, columnspan=2, padx=(20, 20), pady=(10, 10))
+        self.inslabel = customtkinter.CTkLabel(self.home_Frame, text="More Instructions about this app's use")
+        self.inslabel.grid(row=1, column=1, columnspan=2, padx=(20, 20), pady=(10, 10))
+        #bottom buttom to continue adding teams        
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Boton", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1.grid(row=2, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
+        #bottom buttom to continue adding teams        
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Next", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1.grid(row=3, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
+        #bottom buttom to continue adding teams        
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Nt", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1.grid(row=4, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
 
         #Group etage Frame
         self.groupEtage_Frame = customtkinter.CTkFrame(self)
-        self.groupEtage_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(10, 10), sticky="nsew")
-        self.groupEtage_Frame.grid_columnconfigure(0, weight=1)
-        self.groupEtage_Frame.grid_rowconfigure((1,2), weight=1)
-        self.seg_button_1 = customtkinter.CTkLabel(self.groupEtage_Frame, text="Group Etage")
-        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
-        self.teamEntry = customtkinter.CTkEntry(self.groupEtage_Frame)
-        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20))
-        self.teamEntry.grid_columnconfigure(5, weight=1)
+        self.groupEtage_Frame.grid(row=0, column=1, columnspan=4, rowspan=5, padx=(20, 20), pady=(10, 10), sticky="nsew")
+        self.groupEtage_Frame.grid_columnconfigure((0,1,2,3), weight=1)
+        self.groupEtage_Frame.grid_rowconfigure((1,2,3,4), weight=1)
+        self.titlelable = customtkinter.CTkLabel(self.groupEtage_Frame, text="Group Etage")
+        self.titlelable.grid(row=0, column=1, columnspan= 2, padx=(20, 20), pady=(10, 10))
+        self.groupA_frame = customtkinter.CTkFrame(self.groupEtage_Frame)
+        self.groupA_frame.grid(row=1, column=0, columnspan=2, rowspan=2)
+        # self.labelgroupA = customtkinter.CTkLabel(self.groupA_frame, text="Group A")
+        # self.labelgroupA.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
+        self.groupB_frame = customtkinter.CTkFrame(self.groupEtage_Frame)
+        self.groupB_frame.grid(row=3, column=0, columnspan=2, rowspan=2)
+        self.groupC_frame = customtkinter.CTkFrame(self.groupEtage_Frame)
+        self.groupC_frame.grid(row=1, column=2, columnspan=2, rowspan=2)
+        self.groupD_frame = customtkinter.CTkFrame(self.groupEtage_Frame)
+        self.groupD_frame.grid(row=3, column=2, columnspan=2, rowspan=2)
+        #bottom buttom to continue adding teams        
+        self.main_button_1 = customtkinter.CTkButton(master=self.groupEtage_Frame, text="Next", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1.grid(row=6, column=1,columnspan=2, pady=(10, 20), sticky="nsew")
+        
+                #Group etage 2 Frame
+        self.groupEtage2_Frame = customtkinter.CTkFrame(self)
+        self.groupEtage2_Frame.grid(row=0, column=1, columnspan=4, rowspan=5, padx=(20, 20), pady=(10, 10), sticky="nsew")
+        self.groupEtage2_Frame.grid_columnconfigure((0,1,2,3), weight=1)
+        self.groupEtage2_Frame.grid_rowconfigure((1,2,3,4), weight=1)
+        self.titlelable = customtkinter.CTkLabel(self.groupEtage2_Frame, text="Group Etage 2")
+        self.titlelable.grid(row=0, column=1, columnspan= 2, padx=(20, 20), pady=(10, 10))
+        self.groupE_frame = customtkinter.CTkFrame(self.groupEtage2_Frame)
+        self.groupE_frame.grid(row=1, column=0, columnspan=2, rowspan=2)
+        # self.labelgroupA = customtkinter.CTkLabel(self.groupA_frame, text="Group A")
+        # self.labelgroupA.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
+        self.groupF_frame = customtkinter.CTkFrame(self.groupEtage2_Frame)
+        self.groupF_frame.grid(row=3, column=0, columnspan=2, rowspan=2)
+        self.groupG_frame = customtkinter.CTkFrame(self.groupEtage2_Frame)
+        self.groupG_frame.grid(row=1, column=2, columnspan=2, rowspan=2)
+        self.groupH_frame = customtkinter.CTkFrame(self.groupEtage2_Frame)
+        self.groupH_frame.grid(row=3, column=2, columnspan=2, rowspan=2)
 
         #16 round Frame
         self.sixteenround_Frame = customtkinter.CTkFrame(self)
@@ -96,9 +132,6 @@ class App(customtkinter.CTk):
         self.sixteenround_Frame.grid_rowconfigure((1,2), weight=1)
         self.seg_button_1 = customtkinter.CTkLabel(self.sixteenround_Frame, text="16 round")
         self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
-        self.teamEntry = customtkinter.CTkEntry(self.sixteenround_Frame)
-        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20))
-        self.teamEntry.grid_columnconfigure(5, weight=1)
 
         #8 round Frame
         self.eightround_Frame = customtkinter.CTkFrame(self)
@@ -107,9 +140,6 @@ class App(customtkinter.CTk):
         self.eightround_Frame.grid_rowconfigure((1,2), weight=1)
         self.seg_button_1 = customtkinter.CTkLabel(self.eightround_Frame, text="8 round")
         self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
-        self.teamEntry = customtkinter.CTkEntry(self.eightround_Frame)
-        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20))
-        self.teamEntry.grid_columnconfigure(5, weight=1)
 
         #Semifinals Frame
         self.semifinals_Frame = customtkinter.CTkFrame(self)
@@ -118,9 +148,6 @@ class App(customtkinter.CTk):
         self.semifinals_Frame.grid_rowconfigure((1,2), weight=1)
         self.seg_button_1 = customtkinter.CTkLabel(self.semifinals_Frame, text="Semifinals")
         self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
-        self.teamEntry = customtkinter.CTkEntry(self.semifinals_Frame)
-        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20))
-        self.teamEntry.grid_columnconfigure(5, weight=1)
 
         #3rd Place Frame 
         self.thirdplace_Frame = customtkinter.CTkFrame(self)
@@ -129,32 +156,26 @@ class App(customtkinter.CTk):
         self.thirdplace_Frame.grid_rowconfigure((1,2), weight=1)
         self.seg_button_1 = customtkinter.CTkLabel(self.thirdplace_Frame, text="3th Place")
         self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
-        self.teamEntry = customtkinter.CTkEntry(self.thirdplace_Frame)
-        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20))
-        self.teamEntry.grid_columnconfigure(5, weight=1)
 
         #Final Frame
         self.final_Frame = customtkinter.CTkFrame(self)
-        self.final_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(10, 10), sticky="nsew")
+        self.final_Frame.grid(row=1, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(10, 10), sticky="nsew")
         self.final_Frame.grid_columnconfigure(0, weight=1)
         self.final_Frame.grid_rowconfigure((1,2), weight=1)
         self.seg_button_1 = customtkinter.CTkLabel(self.final_Frame, text="Final")
         self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
-        self.teamEntry = customtkinter.CTkEntry(self.final_Frame)
-        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20))
-        self.teamEntry.grid_columnconfigure(5, weight=1)
 
-        # #codigo de guia para el grid
-        # for i in range(4):
-        #     for j in range(1,5):
-        #         frame = customtkinter.CTkFrame(self)
-        #         frame.grid(row=i, column=j, padx=5, pady=5)
+        #codigo de guia para el grid
+        # for i in range(5):
+        #     for j in range(0,4):
+        #         frame = customtkinter.CTkFrame(self.groupEtage_Frame)
+        #         frame.grid(row=i, column=j, padx=(20, 20), pady=(20, 20))
         #         label = customtkinter.CTkLabel(master=frame, text=f"Row {i}\nColumn {j}")
         #         label.pack()
 
         #bottom buttom to continue adding teams        
-        self.main_button_1 = customtkinter.CTkButton(master=self, text="Next", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
-        self.main_button_1.grid(row=4, column=2,columnspan=2, pady=(20, 20), sticky="nsew")
+        self.main_button_1 = customtkinter.CTkButton(master=self.groupEtage_Frame, text="Next", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1.grid(row=6, column=1,columnspan=2, pady=(10, 20), sticky="nsew")
 
         # select default frame
         self.select_frame_by_name("home")
@@ -171,31 +192,35 @@ class App(customtkinter.CTk):
 
         # show selected frame
         if name == "home":
-            self.home_Frame.grid(row=0, column=1, sticky="nsew")
+            self.home_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.home_Frame.grid_forget()
         if name == "groupEtage":
-            self.groupEtage_Frame.grid(row=0, column=1, sticky="nsew")
+            self.groupEtage_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.groupEtage_Frame.grid_forget()
+        if name == "groupEtage2":
+            self.groupEtage2_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
+        else:
+            self.groupEtage2_Frame.grid_forget()
         if name == "sixteenround":
-            self.sixteenround_Frame.grid(row=0, column=1, sticky="nsew")
+            self.sixteenround_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.sixteenround_Frame.grid_forget()
         if name == "eightround":
-            self.eightround_Frame.grid(row=0, column=1, sticky="nsew")
+            self.eightround_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.eightround_Frame.grid_forget()
         if name == "semifinals":
-            self.semifinals_Frame.grid(row=0, column=1, sticky="nsew")
+            self.semifinals_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.semifinals_Frame.grid_forget()
         if name == "thirdplace":
-            self.thirdplace_Frame.grid(row=0, column=1, sticky="nsew")
+            self.thirdplace_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.thirdplace_Frame.grid_forget()
         if name == "final":
-            self.final_Frame.grid(row=0, column=1, sticky="nsew")
+            self.final_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.final_Frame.grid_forget()
 
@@ -242,7 +267,8 @@ class App(customtkinter.CTk):
 
     #   funcion para avanzar a la siguiente pag de añadir
     def NextButtonEvent(self):
-        messagebox.showinfo(title="Alert", message="There is no other window!")
+        self.select_frame_by_name("groupEtage2")
+        # messagebox.showinfo(title="Alert", message="There is no other window!")
 
     #   funcion para añadir los 32 equipos
     def AddButtonEvent(self):
