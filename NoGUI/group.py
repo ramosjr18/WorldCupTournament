@@ -16,6 +16,9 @@ class Group():
     def remove_team(self, team):
         self._group.pop(team.country_getter())
 
+    def team_getter(self, team):
+        return self._group[team.country_getter()][0]
+        
     def add_goals_for(self, team, gf):
         self._group[team.country_getter()][1]["GF"] += gf
         self._group[team.country_getter()][1]["GD"] = self._group[team.country_getter()][1]["GF"] - self._group[team.country_getter()][1]["GA"]  
