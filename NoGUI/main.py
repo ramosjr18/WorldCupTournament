@@ -9,7 +9,7 @@ import os
 
 #this function just creates the groups for the group fase
 def create_groups() -> dict:
-    groups = {"group_A": grp.Group("A"), "group_B": grp.Group("B"), "group_C": grp.Group("C"), "group_D": grp.Group("D"), "group_E": grp.Group("E"), "group_F": grp.Group("F"), "group_G": grp.Group("G"), "group_H": grp.Group("H")}
+    groups = {"A": grp.Group("A"), "B": grp.Group("B"), "C": grp.Group("C"), "D": grp.Group("D"), "E": grp.Group("E"), "F": grp.Group("F"), "G": grp.Group("G"), "H": grp.Group("H")}
     return groups
 
 #this assigns each team the user has given to a random group in an elegant way
@@ -27,13 +27,16 @@ def assign_random_team(teams, groups) -> None:
 
 #this method gets the input from the user to create the 32 teams
 def add_teams_list(lst, groups, matches) -> None:
+    #si, esto da un pequeño bug, pero por ahora funciona
+    names = []
     while len(lst) < 32:
         new_team = input("Introduce the next team: ")
         if new_team == "exit" or new_team == "EXIT" or new_team == "Exit":
             print("I'll save this for later ;)")
             break
         #every new team is appended to a list
-        elif new_team not in lst:
+        elif new_team not in names:
+            names.append(new_team)
             new_country = tm.Team(new_team)
             lst.append(tm.Team(new_country))
             print("The team number ", len(lst), " has been added succesfully")
@@ -73,11 +76,16 @@ def select_group(groups_matches, group_name) -> list:
     for match in groups_matches[group_name]:
         matches.append(match)
     return matches
-        
+
+def team_goals(groups, group, team_name, goals):
+    team = groups[group].team_getter(team_name)
+    groups[group].add_goals_for(team, goals)
+
 
 def app() -> None:
     #falta poner un try aquí porque a veces se putea la recursion
     groups = create_groups()
+    #lst es la lista que contiene a los equipos
     lst = []
     group_phase_matches = {}
     while True:
@@ -113,11 +121,12 @@ def app() -> None:
                         print(index + 1, matches_temp[index])
                     match_input = input("Option: ")
                     print("Introduce the score:")
-                    score_input_A = input(matches_temp[int(match_input)][: matches_temp[int(match_input)].find("VS")].strip() + ": ")
-                    score_input_B = input(matches_temp[int(match_input)][matches_temp[int(match_input)].find("VS") + 2:].strip() + ": ")
-
-
-                    
+                    teamA = matches_temp[int(match_input)][: matches_temp[int(match_input)].find("VS")].strip()
+                    teamB = matches_temp[int(match_input)][matches_temp[int(match_input)].find("VS") + 2:].strip()
+                    score_input_A = int(input(teamA + ": "))
+                    score_input_B = int(input(teamB + ": "))
+                    team_goals(groups, group_input, teamA, score_input_A)
+                    team_goals(groups, group_input, teamB, score_input_B)
 
         else:
             break

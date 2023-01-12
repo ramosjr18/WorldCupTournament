@@ -13,7 +13,7 @@ class Team:
         
         # Initializing Team Values
 
-        self._country = country
+        self._country = str(country)
         self._match_Played = 0 
         self._match_won = 0
         self._match_drawed = 0
@@ -63,9 +63,6 @@ class Team:
 
     def __str__(self) -> str:
         return f"Country: {self.country_getter()}\nmp: {self.match_Played_getter()}\nw: {self.match_won_getter()}\nD: {self.match_drawed_getter()}\nL: {self.match_lost_getter()}"
-
-    def team_name(self) -> str:
-        return self._country
 
     def print_information(self):
         print(self)
