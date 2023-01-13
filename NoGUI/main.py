@@ -84,6 +84,23 @@ def team_goals(groups, group, team_name, goals):
     team = groups[group].team_getter(team_name)
     groups[group].add_goals_for(team, goals)
 
+def match_results(groups, group, team_a, team_b, goals_a, goals_b):
+    #team_a y team_b son str, mientras que teamA y teamB son objetos Team
+    teamA = groups[group].team_getter(team_a)
+    teamB = groups[group].team_getter(team_b)
+    groups[group].add_goals_for(teamA, goals_a)
+    groups[group].add_goals_for(teamB, goals_b)
+    if goals_a > goals_b:
+        teamA.match_won_setter()
+        teamB.match_lost_setter()
+    elif goals_a < goals_b:
+        teamA.match_lost_setter()
+        teamB.match_won_setter()
+    elif goals_a == goals_b:
+        teamA.match_drawed_setter()
+        teamB.match_drawed_setter()
+    groups[group].team_getter(team_a).print_information()
+
 def app() -> None:
     #falta poner un try aquí porque a veces se putea la recursion
     groups = create_groups()
@@ -123,14 +140,11 @@ def app() -> None:
                         print(index + 1, matches_temp[index])
                     match_input = input("Option: ")
                     print("Introduce the score:")
-                    teamA = matches_temp[int(match_input)][: matches_temp[int(match_input)].find("VS")].strip()
-                    teamB = matches_temp[int(match_input)][matches_temp[int(match_input)].find("VS") + 2:].strip()
-                    score_input_A = int(input(teamA + ": "))
-                    score_input_B = int(input(teamB + ": "))
-                    team_goals(groups, group_input, teamA, score_input_A)
-                    team_goals(groups, group_input, teamB, score_input_B)
-        elif select == "3":
-            groups["A"].groupInfo()
+                    team_a = matches_temp[int(match_input)][: matches_temp[int(match_input)].find("VS")].strip()
+                    team_b = matches_temp[int(match_input)][matches_temp[int(match_input)].find("VS") + 2:].strip()
+                    score_input_A = int(input(team_a + ": "))
+                    score_input_B = int(input(team_b + ": "))
+                    match_results(groups, group_input, team_a, team_b, score_input_A, score_input_B)
 
         else:
             break
