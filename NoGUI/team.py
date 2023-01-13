@@ -13,7 +13,7 @@ class Team:
         
         # Initializing Team Values
 
-        self._country = str(country)
+        self._country = country
         self._match_Played = 0 
         self._match_won = 0
         self._match_drawed = 0
