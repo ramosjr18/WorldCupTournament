@@ -41,7 +41,7 @@ def add_teams_list(lst, groups, matches) -> None:
         elif new_team not in names:
             names.append(new_team)
             new_country = tm.Team(new_team)
-            lst.append(tm.Team(new_country))
+            lst.append(new_country)
             print("The team number ", len(lst), " has been added succesfully")
         else:
             print("This team is already in the list, you retard")
@@ -63,7 +63,7 @@ def generate_matches(group, matches) -> None:
         used_teams.append(team)
         for other in teams.keys():
             if other not in used_teams:
-                matches.append(str(team.country_getter()) + " VS " + str(other.country_getter()))
+                matches.append(str(team) + " VS " + str(other))
             else:
                 continue
     return matches
@@ -83,7 +83,6 @@ def select_group(groups_matches, group_name) -> list:
 def team_goals(groups, group, team_name, goals):
     team = groups[group].team_getter(team_name)
     groups[group].add_goals_for(team, goals)
-
 
 def app() -> None:
     #falta poner un try aquí porque a veces se putea la recursion
@@ -130,6 +129,8 @@ def app() -> None:
                     score_input_B = int(input(teamB + ": "))
                     team_goals(groups, group_input, teamA, score_input_A)
                     team_goals(groups, group_input, teamB, score_input_B)
+        elif select == "3":
+            groups["A"].groupInfo()
 
         else:
             break
