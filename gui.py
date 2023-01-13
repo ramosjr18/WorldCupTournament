@@ -72,18 +72,20 @@ class App(customtkinter.CTk):
         self.home_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         self.home_Frame.grid_columnconfigure((0,1,2,3), weight=1)
         self.home_Frame.grid_rowconfigure((1,2,3,4,5), weight=1)
-        self.TittleLabel = customtkinter.CTkLabel(self.home_Frame, text="Instructions", font=customtkinter.CTkFont(size=20, weight="bold"))
-        self.TittleLabel.grid(row=0, column=1, columnspan=2, padx=(20, 20), pady=(10, 10))
-        self.inslabel = customtkinter.CTkLabel(self.home_Frame, text="More Instructions about this app's use")
-        self.inslabel.grid(row=1, column=1, columnspan=2, padx=(20, 20), pady=(10, 10))
+        self.TittleLabel = customtkinter.CTkLabel(self.home_Frame, text="Welcome", font=customtkinter.CTkFont(size=30, weight="bold"))
+        self.TittleLabel.grid(row=0, column=1, columnspan=2, padx=(20, 20), pady=(20, 10))
+        self.inslabel = customtkinter.CTkLabel(self.home_Frame, 
+                                            text="Here you can add, auto generate the teams \n and also add the group etage results \n also see the diferent etages by clicking the  buttons in the side bar", 
+                                            font=customtkinter.CTkFont(size=15))
+        self.inslabel.grid(row=1, column=1, columnspan=2, padx=(10, 10), pady=(10, 10))
         #bottom buttom to continue adding teams        
-        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Add Teams", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Add Teams", text_color=("gray10", "#DCE4EE"), command=self.Addteams1)
         self.main_button_1.grid(row=2, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
         #bottom buttom to continue adding teams        
-        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Add Group Etage \n Results", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Auto Generate \n teams", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
         self.main_button_1.grid(row=3, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
         #bottom buttom to continue adding teams        
-        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="donut", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.main_button_1 = customtkinter.CTkButton(master=self.home_Frame, text="Add Group Etage \n Results", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
         self.main_button_1.grid(row=4, column=1,columnspan=2,padx=(20, 20), pady=(10, 20), sticky="nsew")
 
         #Group etage Frame
@@ -640,6 +642,193 @@ class App(customtkinter.CTk):
         self.labelTeamAd.grid(row=5, column=5, padx=(2, 2), pady=(0, 0))
         self.labelPtsA = customtkinter.CTkLabel(self.groupD_frame, text="0")
         self.labelPtsA.grid(row=5, column=6, padx=(2, 2), pady=(0, 0))
+        
+        #Frame to add Teams
+        self.AddTeams_Frame = tkinter.Frame(self)
+        self.AddTeams_Frame.grid(row=0, column=1,  columnspan=4, rowspan=4, padx=(0, 0), pady=(0, 0), sticky="nsew")
+        self.AddTeams_Frame.grid_columnconfigure((0,1,2,3,4), weight=1)
+        self.AddTeams_Frame.grid_rowconfigure((1,2,3), weight=1)
+        
+        # create boxes for each entry  on row 0 column 1
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=0, column=1, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 0 column 2
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=0, column=2, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 0 column 3
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=0, column=3, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 0 column 4
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=0, column=4, columnspan=1, rowspan=1, padx=(20, 20), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry on row 1 column 1
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=1, column=1, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Teams")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 1 column 2
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=1, column=2, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 1 column 3
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=1, column=3, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 1 column 4
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=1, column=4, columnspan=1, rowspan=1, padx=(20, 20), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry on row 2 columnm 1
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=2, column=1, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Teams")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 2 column 2
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=2, column=2, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 2 column 3
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=2, column=3, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 2 column 4
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=2, column=4, columnspan=1, rowspan=1, padx=(20, 20), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry on row 3 column 1
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=3, column=1, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 3 column 2
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=3, column=2, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+
+        # create boxes for each entry  on row 3 column 3
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=3, column=3, columnspan=1, rowspan=1, padx=(20, 0), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+        
+        # create boxes for each entry  on row 3 column 4
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.AddTeams_Frame)
+        self.slider_progressbar_frame.grid(row=3, column=4, columnspan=1, rowspan=1, padx=(20, 20), pady=(10, 10), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)
+        self.seg_button_1 = customtkinter.CTkLabel(self.slider_progressbar_frame, text="Add Team")
+        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="ew")
+        self.teamEntry = customtkinter.CTkEntry(self.slider_progressbar_frame, placeholder_text="Enter team")
+        self.teamEntry.grid(row=1, column=0, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.teamEntry.grid_columnconfigure(5, weight=1)
+        
+        #button to continue adding teams
+        self.continuebutton = customtkinter.CTkButton(master=self.AddTeams_Frame, text="Continue", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent    )
+        self.continuebutton.grid(row=4, column=2, columnspan=2, padx=(20, 10), pady=(10, 20), sticky="nsew")
+
 
         #16 round Frame
         self.sixteenround_Frame = customtkinter.CTkFrame(self)
@@ -711,6 +900,10 @@ class App(customtkinter.CTk):
             self.home_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
             self.home_Frame.grid_forget()
+        if name == "AddTeams":
+            self.AddTeams_Frame.grid(row=0, column=1,  columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
+        else:
+            self.AddTeams_Frame.grid_forget()
         if name == "groupEtage":
             self.groupEtage_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
         else:
@@ -768,6 +961,10 @@ class App(customtkinter.CTk):
     #group etage pagefunction
     def final(self):
         self.select_frame_by_name("final")
+
+    #group etage pagefunction
+    def Addteams1(self):
+        self.select_frame_by_name("AddTeams")
 
 
 
