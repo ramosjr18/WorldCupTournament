@@ -24,3 +24,11 @@ class Sfinal():
             if self.result[i]["Won"]:
                 winners.append(self.sfinal[i])
         return winners
+
+    def lossers(self):
+
+        lossers = []
+        for i in range(len(self.result)):
+            if not (self.result[i]["Won"]):
+                lossers.append(self.sfinal[i])
+        return
