@@ -62,3 +62,6 @@ class Group():
             print()
 
         print(self._group)
+        
+    def groupTeams(self) -> dict:
+        return self._group
