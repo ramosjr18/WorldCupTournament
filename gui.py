@@ -100,6 +100,7 @@ class App(customtkinter.CTk):
         self.groupA_frame.grid(row=1, column=0, rowspan=2)
         self.groupA_frame.grid_columnconfigure((0,1,2,3,4,5,6), weight=1)
         self.groupA_frame.grid_rowconfigure((1,2,3,4,5,6), weight=1)
+        
 
         #Group etage labels titles for group A
         self.labelgroupA = customtkinter.CTkLabel(self.groupA_frame, text="Group A")
@@ -182,6 +183,7 @@ class App(customtkinter.CTk):
         self.groupB_frame.grid(row=3, column=0, rowspan=2)
         self.groupB_frame.grid_columnconfigure((0,1,2,3,4,5,6), weight=1)
         self.groupB_frame.grid_rowconfigure((1,2,3,4,5,6), weight=1)
+        
 
         #Group etage labels titles for group B
         self.labelgroupB = customtkinter.CTkLabel(self.groupB_frame, text="Group B")
@@ -1234,10 +1236,31 @@ class App(customtkinter.CTk):
         #8 round Frame
         self.eightround_Frame = customtkinter.CTkFrame(self)
         self.eightround_Frame.grid(row=0, column=1, columnspan=4, rowspan=4, padx=(20, 20), pady=(10, 10), sticky="nsew")
-        self.eightround_Frame.grid_columnconfigure(0, weight=1)
-        self.eightround_Frame.grid_rowconfigure((1,2), weight=1)
-        self.seg_button_1 = customtkinter.CTkLabel(self.eightround_Frame, text="8 round")
-        self.seg_button_1.grid(row=0, column=0, padx=(20, 20), pady=(10, 10))
+        self.eightround_Frame.grid_columnconfigure((0,1), weight=1)
+        self.eightround_Frame.grid_rowconfigure((1,2,3,4), weight=1)
+        self.eightroundtitle = customtkinter.CTkLabel(self.eightround_Frame, text="8 round", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.eightroundtitle.grid(row=0, column=0, columnspan= 2, padx=(20, 20), pady=(10, 10))
+
+        #Group etage Frame for group A
+        self.groupA_frame = customtkinter.CTkFrame(self.eightround_Frame)
+        self.groupA_frame.grid(row=1, column=0, rowspan=2)
+        self.groupA_frame.grid_columnconfigure((0,1,2,3,4,5,6), weight=1)
+        self.groupA_frame.grid_rowconfigure((1,2,3,4,5,6), weight=1)
+        #Group etage Frame for group B
+        self.groupB_frame = customtkinter.CTkFrame(self.eightround_Frame)
+        self.groupB_frame.grid(row=3, column=0, rowspan=2)
+        self.groupB_frame.grid_columnconfigure((0,1,2,3,4,5,6), weight=1)
+        self.groupB_frame.grid_rowconfigure((1,2,3,4,5,6), weight=1)
+        #Group etage Frame for group C
+        self.groupC_frame = customtkinter.CTkFrame(self.eightround_Frame)
+        self.groupC_frame.grid(row=1, column=1, columnspan=2, rowspan=2)
+        self.groupC_frame.grid_columnconfigure((0,1,2,3,4,5,6), weight=1)
+        self.groupC_frame.grid_rowconfigure((1,2,3,4,5,6), weight=1)
+        #Group etage Frame for group D
+        self.groupD_frame = customtkinter.CTkFrame(self.eightround_Frame)
+        self.groupD_frame.grid(row=3, column=1, columnspan=2, rowspan=2)
+        self.groupD_frame.grid_columnconfigure((0,1,2,3,4,5,6), weight=1)
+        self.groupD_frame.grid_rowconfigure((1,2,3,4,5,6), weight=1)
 
         #Semifinals Frame
         self.semifinals_Frame = customtkinter.CTkFrame(self)
