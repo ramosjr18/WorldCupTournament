@@ -35,7 +35,6 @@ def add_teams_list(teams):
     #si, esto da un pequeño bug, pero por ahora funciona
     groups = []
     for i in range(0,len(teams),4):
-        print(i)
         group = grp.Group(str(i))
         for j in range(4):
             new_team = tm.Team(teams[j+i])
