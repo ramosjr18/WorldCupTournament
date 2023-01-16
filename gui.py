@@ -1217,7 +1217,7 @@ class App(customtkinter.CTk):
             self.labelTeamHtwo.configure(text=self.teams[29])
             self.labelTeamHthree.configure(text=self.teams[30])
             self.labelTeamHfour.configure(text=self.teams[31])
-
+            
             #sends you back to group Etage page
             self.select_frame_by_name("groupEtage")
 
@@ -1973,7 +1973,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 4
         #index 1 vs 2
-        self.ask_question(self.groups[0].get_teams()[1] +" vs "+ self.groups[0].get_teams()[2],self.groups[0].get_teams()[1],self.groups[0].get_teams()[2], self.groups[0])
+        self.ask_question(self.groups[4].get_teams()[1] +" vs "+ self.groups[4].get_teams()[2],self.groups[4].get_teams()[1],self.groups[4].get_teams()[2], self.groups[4])
         #update the default label variables for team 1
         self.labelPjEtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_Played_getter())
         self.labelgroupEwtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_won_getter())
@@ -1989,7 +1989,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 5
         #index 1 vs 3
-        self.ask_question(self.groups[0].get_teams()[1] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[1],self.groups[0].get_teams()[3], self.groups[0])
+        self.ask_question(self.groups[4].get_teams()[1] +" vs "+ self.groups[4].get_teams()[3],self.groups[4].get_teams()[1],self.groups[4].get_teams()[3], self.groups[4])
         #update the default label variables for team 1
         self.labelPjEtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_Played_getter())
         self.labelgroupEwtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_won_getter())
@@ -2005,7 +2005,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 6
         #index 2 vs 3
-        self.ask_question(self.groups[0].get_teams()[2] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[2],self.groups[0].get_teams()[3], self.groups[0])
+        self.ask_question(self.groups[4].get_teams()[2] +" vs "+ self.groups[4].get_teams()[3],self.groups[4].get_teams()[2],self.groups[4].get_teams()[3], self.groups[4])
         #update the default label variables for team 1
         self.labelPjEthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_Played_getter())
         self.labelgroupEwthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_won_getter())
@@ -2055,7 +2055,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 3
         #index 0 vs 3
-        self.ask_question(self.groups[5].get_teams()[5] +" vs "+ self.groups[5].get_teams()[3],self.groups[5].get_teams()[0],self.groups[5].get_teams()[3], self.groups[5])
+        self.ask_question(self.groups[5].get_teams()[0] +" vs "+ self.groups[5].get_teams()[3],self.groups[5].get_teams()[0],self.groups[5].get_teams()[3], self.groups[5])
         #update the default label variables for team 1
         self.labelPjFone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_Played_getter())
         self.labelgroupFwone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_won_getter())
