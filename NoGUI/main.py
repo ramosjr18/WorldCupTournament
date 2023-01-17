@@ -138,6 +138,7 @@ def app() -> None:
                 print(" 2. Round 16")
                 print(" 3. Quarters")
                 print(" 4. Semifinal")
+                print(" 5. Final")
                 select_2 = input("Option: ")
                 if select_2 == "1":
                     print("Select a group: ")
@@ -252,8 +253,30 @@ def app() -> None:
                         semi.addteams(cuartos)
                     else:
                         continue
-
-
+                if select_2 == "4":
+                    print("Introduce a score: ")
+                    length = len(semi.round_teams())
+                    for i in range(length / 2):
+                        print(i, ".", semi.round_teams()[i].country_getter(), "VS", semi.round_teams()[length - i - 1].country_getter())
+                    match_input = input("Option: ")
+                    if match_input == "1":
+                        goals_a = input(semi.round_teams[0].country_getter(), ":")
+                        goals_b = input(semi.round_teams[3].country_getter(), ":")
+                        semi.addresult(semi.round_teams[0], int(goals_a), True if goals_a > goals_b else False)
+                        semi.addresult(semi.round_teams[3], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "2":
+                        goals_a = input(semi.round_teams[1].country_getter(), ":")
+                        goals_b = input(semi.round_teams[2].country_getter(), ":")
+                        semi.addresult(semi.round_teams[1], int(goals_a), True if goals_a > goals_b else False)
+                        semi.addresult(semi.round_teams[2], int(goals_b), True if goals_a < goals_b else False)
+                    os.system('cls')
+                    print("Is this the last group phase match?")
+                    last_match = input("Y/N: ").strip()
+                    if last_match == "Y" or last_match == "y":
+                        semi.winners()
+                        final.addteams(semi)
+                    else:
+                        continue
         else:
             break
         #os.system('cls')
