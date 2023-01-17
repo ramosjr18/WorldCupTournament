@@ -136,6 +136,8 @@ def app() -> None:
                 print("Where we at?")
                 print(" 1. Groups")
                 print(" 2. Round 16")
+                print(" 3. Quarters")
+                print(" 4. Semifinal")
                 select_2 = input("Option: ")
                 if select_2 == "1":
                     print("Select a group: ")
@@ -208,9 +210,49 @@ def app() -> None:
                         goals_b = input(octavos.round_teams[8].country_getter(), ":")
                         octavos.addresult(octavos.round_teams[7], int(goals_a), True if goals_a > goals_b else False)
                         octavos.addresult(octavos.round_teams[8], int(goals_b), True if goals_a < goals_b else False)
-                    
+                    os.system('cls')
+                    print("Is this the last group phase match?")
+                    last_match = input("Y/N: ").strip()
+                    if last_match == "Y" or last_match == "y":
+                        octavos.winners()
+                        cuartos.addteams(octavos)
+                    else:
+                        continue
+                if select_2 == "3":
+                    print("Introduce a score: ")
+                    length = len(cuartos.round_teams())
+                    for i in range(length / 2):
+                        print(i, ".", cuartos.round_teams()[i].country_getter(), "VS", cuartos.round_teams()[length - i - 1].country_getter())
+                    match_input = input("Option: ")
+                    if match_input == "1":
+                        goals_a = input(cuartos.round_teams[0].country_getter(), ":")
+                        goals_b = input(cuartos.round_teams[7].country_getter(), ":")
+                        cuartos.addresult(cuartos.round_teams[0], int(goals_a), True if goals_a > goals_b else False)
+                        cuartos.addresult(cuartos.round_teams[7], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "2":
+                        goals_a = input(cuartos.round_teams[1].country_getter(), ":")
+                        goals_b = input(cuartos.round_teams[6].country_getter(), ":")
+                        cuartos.addresult(cuartos.round_teams[1], int(goals_a), True if goals_a > goals_b else False)
+                        cuartos.addresult(cuartos.round_teams[6], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "3":
+                        goals_a = input(cuartos.round_teams[2].country_getter(), ":")
+                        goals_b = input(cuartos.round_teams[5].country_getter(), ":")
+                        cuartos.addresult(cuartos.round_teams[2], int(goals_a), True if goals_a > goals_b else False)
+                        cuartos.addresult(cuartos.round_teams[5], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "4":
+                        goals_a = input(cuartos.round_teams[3].country_getter(), ":")
+                        goals_b = input(cuartos.round_teams[4].country_getter(), ":")
+                        cuartos.addresult(cuartos.round_teams[3], int(goals_a), True if goals_a > goals_b else False)
+                        cuartos.addresult(cuartos.round_teams[4], int(goals_b), True if goals_a < goals_b else False)
+                    os.system('cls')
+                    print("Is this the last group phase match?")
+                    last_match = input("Y/N: ").strip()
+                    if last_match == "Y" or last_match == "y":
+                        cuartos.winners()
+                        semi.addteams(cuartos)
+                    else:
+                        continue
 
-                    
 
         else:
             break
