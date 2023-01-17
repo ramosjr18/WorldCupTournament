@@ -13,7 +13,7 @@ class Sfinal():
     
     def addresult(self,team,goal,won):
         for i in range(len(self.sfinal)):
-            if team.country_getter == self.sfinal[i].country_getter:
+            if team.country_getter() == self.sfinal[i].country_getter():
                 self.result[i]["Goals"] = goal
                 self.result[i]["Won"] = won
     

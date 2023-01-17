@@ -14,7 +14,7 @@ class Qfinal():
     def addresult(self,team,goal,won):
         
         for i in range(len(self.qfinal)):
-            if team.country_getter == self.qfinal[i].country_getter:
+            if team.country_getter() == self.qfinal[i].country_getter():
                 self.result[i]["Goals"] = goal
                 self.result[i]["Won"] = won
     
