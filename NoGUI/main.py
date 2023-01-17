@@ -99,7 +99,9 @@ def match_results(groups, group, team_a, team_b, goals_a, goals_b):
     elif goals_a == goals_b:
         teamA.match_drawed_setter()
         teamB.match_drawed_setter()
-    groups[group].team_getter(team_a).print_information()
+    teamA.points()
+    teamB.points()
+
 
 def app() -> None:
     #falta poner un try aquí porque a veces se putea la recursion
@@ -107,6 +109,10 @@ def app() -> None:
     #lst es la lista que contiene a los equipos
     lst = []
     group_phase_matches = {}
+    octavos = rd.Round16()
+    cuartos = qf.Qfinal()
+    semi = sf.Sfinal()
+    final = fn.Final()
     while True:
         print("Choose wisely:")
         if not lst:
@@ -129,10 +135,11 @@ def app() -> None:
                 os.system('cls')
                 print("Where we at?")
                 print(" 1. Groups")
+                print(" 2. Round 16")
                 select_2 = input("Option: ")
                 if select_2 == "1":
-                    print(" Select a group: ")
-                    group_input = input(" A, B, C, D, E, F, G or H:\n")
+                    print("Select a group: ")
+                    group_input = input("   A, B, C, D, E, F, G or H: ")
                     matches_temp = select_group(group_phase_matches, group_input)
                     os.system('cls')
                     print("Select a match:")
@@ -145,6 +152,65 @@ def app() -> None:
                     score_input_A = int(input(team_a + ": "))
                     score_input_B = int(input(team_b + ": "))
                     match_results(groups, group_input, team_a, team_b, score_input_A, score_input_B)
+                    os.system('cls')
+                    print("Is this the last group phase match?")
+                    last_match = input("Y/N: ").strip()
+                    if last_match == "Y" or last_match == "y":
+                        for group in groups:
+                            group.winners()
+                            octavos.addteams(group)
+                    else:
+                        continue
+                if select_2 == "2":
+                    print("Introduce a score: ")
+                    #no tengo tiempo de hacerlo mas bonito y elegante, tons se aguantan
+                    length = len(octavos.round_teams())
+                    for i in range(length / 2):
+                        print(i, ".", octavos.round_teams()[i].country_getter(), "VS", octavos.round_teams()[length - i - 1].country_getter())
+                    match_input = input("Option: ")
+                    if match_input == "1":
+                        goals_a = input(octavos.round_teams[0].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[15].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[0], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[15], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "2":
+                        goals_a = input(octavos.round_teams[1].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[14].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[1], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[14], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "3":
+                        goals_a = input(octavos.round_teams[2].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[13].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[2], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[13], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "4":
+                        goals_a = input(octavos.round_teams[3].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[12].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[3], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[12], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "5":
+                        goals_a = input(octavos.round_teams[4].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[11].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[4], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[11], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "6":
+                        goals_a = input(octavos.round_teams[5].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[10].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[5], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[10], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "7":
+                        goals_a = input(octavos.round_teams[6].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[9].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[6], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[9], int(goals_b), True if goals_a < goals_b else False)
+                    if match_input == "8":
+                        goals_a = input(octavos.round_teams[7].country_getter(), ":")
+                        goals_b = input(octavos.round_teams[8].country_getter(), ":")
+                        octavos.addresult(octavos.round_teams[7], int(goals_a), True if goals_a > goals_b else False)
+                        octavos.addresult(octavos.round_teams[8], int(goals_b), True if goals_a < goals_b else False)
+                    
+
+                    
 
         else:
             break
