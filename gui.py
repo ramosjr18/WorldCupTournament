@@ -2,6 +2,9 @@ import tkinter
 import tkinter.messagebox as messagebox
 import customtkinter
 import os
+import team as tm
+import group as grp
+import random as rnd
 from PIL import Image
 
 # Modes: "System" (standard), "Dark", "Light"
@@ -1014,42 +1017,74 @@ class App(customtkinter.CTk):
         def SaveTeams():
             #List to store every team 
             self.teams = []
-            self.teams.append(self.teamEntry1.get())
-            self.teams.append(self.teamEntry2.get())
-            self.teams.append(self.teamEntry3.get())
-            self.teams.append(self.teamEntry4.get())
-            self.teams.append(self.teamEntry5.get())
-            self.teams.append(self.teamEntry6.get())
-            self.teams.append(self.teamEntry7.get())
-            self.teams.append(self.teamEntry8.get())
-            self.teams.append(self.teamEntry9.get())
-            self.teams.append(self.teamEntry10.get())
-            self.teams.append(self.teamEntry11.get())
-            self.teams.append(self.teamEntry12.get())
-            self.teams.append(self.teamEntry13.get())
-            self.teams.append(self.teamEntry14.get())
-            self.teams.append(self.teamEntry15.get())
-            self.teams.append(self.teamEntry16.get())
-            self.teams.append(self.teamEntry17.get())
-            self.teams.append(self.teamEntry18.get())
-            self.teams.append(self.teamEntry19.get())
-            self.teams.append(self.teamEntry20.get())
-            self.teams.append(self.teamEntry21.get())
-            self.teams.append(self.teamEntry22.get())
-            self.teams.append(self.teamEntry23.get())
-            self.teams.append(self.teamEntry24.get())
-            self.teams.append(self.teamEntry25.get())
-            self.teams.append(self.teamEntry26.get())
-            self.teams.append(self.teamEntry27.get())
-            self.teams.append(self.teamEntry28.get())
-            self.teams.append(self.teamEntry29.get())
-            self.teams.append(self.teamEntry30.get())
-            self.teams.append(self.teamEntry31.get())
-            self.teams.append(self.teamEntry32.get())
-            
-            print(self.teams)
+            self.teams.append(tm.Team(self.teamEntry1.get()))
+            self.teams.append(tm.Team(self.teamEntry2.get()))
+            self.teams.append(tm.Team(self.teamEntry3.get()))
+            self.teams.append(tm.Team(self.teamEntry4.get()))
+            self.teams.append(tm.Team(self.teamEntry5.get()))
+            self.teams.append(tm.Team(self.teamEntry6.get()))
+            self.teams.append(tm.Team(self.teamEntry7.get()))
+            self.teams.append(tm.Team(self.teamEntry8.get()))
+            self.teams.append(tm.Team(self.teamEntry9.get()))
+            self.teams.append(tm.Team(self.teamEntry10.get()))
+            self.teams.append(tm.Team(self.teamEntry11.get()))
+            self.teams.append(tm.Team(self.teamEntry12.get()))
+            self.teams.append(tm.Team(self.teamEntry13.get()))
+            self.teams.append(tm.Team(self.teamEntry14.get()))
+            self.teams.append(tm.Team(self.teamEntry15.get()))
+            self.teams.append(tm.Team(self.teamEntry16.get()))
+            self.teams.append(tm.Team(self.teamEntry17.get()))
+            self.teams.append(tm.Team(self.teamEntry18.get()))
+            self.teams.append(tm.Team(self.teamEntry19.get()))
+            self.teams.append(tm.Team(self.teamEntry20.get()))
+            self.teams.append(tm.Team(self.teamEntry21.get()))
+            self.teams.append(tm.Team(self.teamEntry22.get()))
+            self.teams.append(tm.Team(self.teamEntry23.get()))
+            self.teams.append(tm.Team(self.teamEntry24.get()))
+            self.teams.append(tm.Team(self.teamEntry25.get()))
+            self.teams.append(tm.Team(self.teamEntry26.get()))
+            self.teams.append(tm.Team(self.teamEntry27.get()))
+            self.teams.append(tm.Team(self.teamEntry28.get()))
+            self.teams.append(tm.Team(self.teamEntry29.get()))
+            self.teams.append(tm.Team(self.teamEntry30.get()))
+            self.teams.append(tm.Team(self.teamEntry31.get()))
+            self.teams.append(tm.Team(self.teamEntry32.get()))
 
-        self.saveButton = customtkinter.CTkButton(master=self.AddTeams2_Frame, text="Save", text_color=("gray10", "#DCE4EE"), command=SaveTeams)
+            return self.teams
+
+        def create_groups():
+            groups = {"A": grp.Group("A"), "B": grp.Group("B"), "C": grp.Group("C"), "D": grp.Group("D"), "E": grp.Group("E"), "F": grp.Group("F"), "G": grp.Group("G"), "H": grp.Group("H")}
+            return groups
+        
+        def get_random_group(groups) -> str:
+            random_group = rnd.choice(list(groups.keys()))
+            #the return checks if the group has already 4 groups in it so every groups has that limit
+            return random_group if len(groups.get(random_group).groupTeams()) < 4 else get_random_group(groups)
+
+        def assign_random_team(teams, groups) -> None:
+            for team in teams:
+                try:
+                    random_group = get_random_group(groups)
+                except:
+                    random_group = get_random_group(groups)
+                groups.get(random_group).add_team(team)
+            
+        def print_groups(groups):
+            for group in groups.keys():
+                print(group)
+                print(groups[group].groupTeams())
+
+        self.teamsLst = SaveTeams()
+        self.groups = create_groups()
+        assign_random_team(self.teamsLst, self.groups)
+        print_groups(self.groups)
+        def big_funct(teams, groups):
+            assign_random_team(teams, groups)
+            print_groups(groups)
+
+
+
+        self.saveButton = customtkinter.CTkButton(master=self.AddTeams2_Frame, text="Save", text_color=("gray10", "#DCE4EE"), command=big_funct(self.teamsLst, self.groups))
         self.saveButton.grid(row=4, column=2, columnspan=2, padx=(20, 10), pady=(10, 20), sticky="nsew")
 
         #16 round Frame

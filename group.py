@@ -11,18 +11,21 @@ class Group():
     """ add team method """
     
     def add_team(self,team):
-        self._group[team.country_getter] = [team,{"GF":0,"GA":0,"GD":0,"Pts":0}]
+        self._group[team.country_getter()] = [team,{"GF":0,"GA":0,"GD":0,"Pts":0}]
     
     def remove_team(self, team):
-        self._group.pop(team.country_getter)
+        self._group.pop(team.country_getter())
+
+    def team_getter(self, team):
+        return self._group[team][0]
 
     def add_goals_for(self, team, gf):
-        self._group[team.country_getter][1]["GF"] += gf
-        self._group[team.country_getter][1]["GD"] = self._group[team.country_getter][1]["GF"] - self._group[team.country_getter][1]["GA"]  
+        self._group[team.country_getter()][1]["GF"] += gf
+        self._group[team.country_getter()][1]["GD"] = self._group[team.country_getter()][1]["GF"] - self._group[team.country_getter()][1]["GA"]  
     
     def add_goals_goal(self, team, ga):
-        self._group[team.country_getter][1]["GA"] += ga
-        self._group[team.country_getter][1]["GD"] = self._group[team.country_getter][1]["GF"] - self._group[team.country_getter][1]["GA"]  
+        self._group[team.country_getter()][1]["GA"] += ga
+        self._group[team.country_getter()][1]["GD"] = self._group[team.country_getter()][1]["GF"] - self._group[team.country_getter()][1]["GA"]  
     
     def poinst(self):
         
@@ -63,5 +66,8 @@ class Group():
 
         print(self._group)
 
-    def groupTeams(self):
+    def groupTeams(self) -> dict:
         return self._group
+
+    def groupName(self) -> str:
+        return self._name
