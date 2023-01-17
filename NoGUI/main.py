@@ -99,8 +99,7 @@ def match_results(groups, group, team_a, team_b, goals_a, goals_b):
     elif goals_a == goals_b:
         teamA.match_drawed_setter()
         teamB.match_drawed_setter()
-    teamA.points()
-    teamB.points()
+    groups[group].points()
 
 
 def app() -> None:
@@ -142,7 +141,7 @@ def app() -> None:
                 select_2 = input("Option: ")
                 if select_2 == "1":
                     print("Select a group: ")
-                    group_input = input("   A, B, C, D, E, F, G or H: ")
+                    group_input = input("   A, B, C, D, E, F, G or H: ").capitalize()
                     matches_temp = select_group(group_phase_matches, group_input)
                     os.system('cls')
                     print("Select a match:")
@@ -159,9 +158,9 @@ def app() -> None:
                     print("Is this the last group phase match?")
                     last_match = input("Y/N: ").strip()
                     if last_match == "Y" or last_match == "y":
-                        for group in groups:
-                            group.winners()
-                            octavos.addteams(group)
+                        for group in groups.values():
+                            # group.winners()
+                            octavos.addteams(group.winners())
                     else:
                         continue
                 if select_2 == "2":
