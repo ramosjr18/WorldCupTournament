@@ -277,6 +277,15 @@ def app() -> None:
                         final.addteams(semi)
                     else:
                         continue
+                if select_2 == "5":
+                    print("Introduce the score: ")
+                    goals_a = input(final.round_teams[0].country_getter(), ":")
+                    goals_b = input(final.round_teams[1].country_getter(), ":")
+                    final.addresult(final.round_teams[0], int(goals_a), True if goals_a > goals_b else False)
+                    final.addresult(final.round_teams[1], int(goals_b), True if goals_a < goals_b else False)
+                    final.winners()
+                    os.system('cls')
+                    print("The winner is:", final.winners()[0])
         else:
             break
         #os.system('cls')
