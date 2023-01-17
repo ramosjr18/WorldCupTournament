@@ -160,7 +160,7 @@ def app() -> None:
                     if last_match == "Y" or last_match == "y":
                         for group in groups.values():
                             # group.winners()
-                            octavos.addteams(group.winners())
+                            octavos.addteams(group)
                     else:
                         continue
                 if select_2 == "2":
