@@ -27,7 +27,7 @@ class Group():
         self._group[team.country_getter()][1]["GA"] += ga
         self._group[team.country_getter()][1]["GD"] = self._group[team.country_getter()][1]["GF"] - self._group[team.country_getter()][1]["GA"]  
     
-    def poinst(self):
+    def points(self):
         
         for key in self._group:
             self._group[key][1]["Pts"] = self._group[key][0].match_won_getter()*3 + self._group[key][0].match_drawed_getter()*1
