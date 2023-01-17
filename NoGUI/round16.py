@@ -25,3 +25,6 @@ class Round16():
             if self.result[i]["Won"]:
                 winners.append(self.round16[i])
         return winners
+
+    def round_teams(self):
+        return self.round16
