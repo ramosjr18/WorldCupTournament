@@ -17,6 +17,9 @@ class Round16():
             if team.country_getter == self.round16[i].country_getter:
                 self.result[i]["Goals"] = goal
                 self.result[i]["Won"] = won
+
+    def getteam(self,cat):
+        return self.round16[cat].country_getter()
     
     def winners(self):
 

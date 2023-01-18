@@ -4,6 +4,12 @@ import customtkinter
 import customtkinter as ctk
 import os
 import main
+import team as tm
+import group as grp
+import round16 as rd
+import qfinal as qf
+import sfinal as sf
+import final as fn
 from PIL import Image
 
 # Modes: "System" (standard), "Dark", "Light"
@@ -15,7 +21,7 @@ customtkinter.set_default_color_theme("blue")
 class App(customtkinter.CTk):
 
     groups =[""]
-
+    round16 = rd.Round16()
     def __init__(self):
         super().__init__()
 
@@ -1250,7 +1256,9 @@ class App(customtkinter.CTk):
         self.sixmatch1team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch1team2re = customtkinter.CTkLabel(self.sixmatch1, text="0")
         self.sixmatch1team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch1teamsave = customtkinter.CTkButton(self.sixmatch1, text="Enter Result")
+
+       
+        self.sixmatch1teamsave = customtkinter.CTkButton(self.sixmatch1, text="Enter Result", command=self.get_input_round161)
         self.sixmatch1teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1618,7 +1626,30 @@ class App(customtkinter.CTk):
 
     #group etage pagefunction
     def sixteenround(self):
+
+        
+        for group in self.groups:
+            self.round16.addteams(group)
+
+        self.sixmatch1team1.configure(text=f"{self.round16.getteam(0)}")
+        self.sixmatch1team2.configure(text=f"{self.round16.getteam(2)}")
+        self.sixmatch2team1.configure(text=f"{self.round16.getteam(4)}")
+        self.sixmatch2team2.configure(text=f"{self.round16.getteam(6)}")
+        self.sixmatch3team1.configure(text=f"{self.round16.getteam(8)}")
+        self.sixmatch3team2.configure(text=f"{self.round16.getteam(10)}")
+        self.sixmatch4team1.configure(text=f"{self.round16.getteam(12)}")
+        self.sixmatch4team2.configure(text=f"{self.round16.getteam(14)}")
+        self.sixmatch5team1.configure(text=f"{self.round16.getteam(15)}")
+        self.sixmatch5team2.configure(text=f"{self.round16.getteam(13)}")
+        self.sixmatch6team1.configure(text=f"{self.round16.getteam(11)}")
+        self.sixmatch6team2.configure(text=f"{self.round16.getteam(9)}")
+        self.sixmatch7team1.configure(text=f"{self.round16.getteam(7)}")
+        self.sixmatch7team2.configure(text=f"{self.round16.getteam(5)}")
+        self.sixmatch8team1.configure(text=f"{self.round16.getteam(3)}")
+        self.sixmatch8team2.configure(text=f"{self.round16.getteam(1)}")
+
         self.select_frame_by_name("sixteenround")
+
 
     #group etage pagefunction
     def eightround(self):
@@ -2548,6 +2579,65 @@ class App(customtkinter.CTk):
         self.labelTeamHdfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_drawed_getter())
         self.labelPtsHfour.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[3]))
 
+    def ask_question_round16(self,question,team1,team2,round16):
+        top = ctk.CTkToplevel()
+        top.title("Input")
+
+        label = ctk.CTkLabel(top, text=question)
+        label.pack()
+
+        entry = ctk.CTkEntry(top, placeholder_text="team 1 score")
+        entry.pack()
+
+        entry2 = ctk.CTkEntry(top, placeholder_text="team 2 score")
+        entry2.pack()
+
+        def submit():
+            answer = entry.get()
+            answer2 = entry2.get()
+            # print(group.get_teams())
+            def compare_numbers(a ,b):
+                if a > b:
+                    round16.addresult(team2,b,False)
+                    round16.addresult(team1,a,True)
+                else:
+                    round16.addresult(team2,b,True)
+                    round16.addresult(team1,a,False) 
+
+
+            compare_numbers(int(answer), int(answer2))
+            top.destroy()
+ 
+
+        submit_button = ctk.CTkButton(top, text="Submit", command=submit)
+        submit_button.pack()
+        top.wait_window()
+
+    def get_input_round161(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[0].country_getter() +" vs "+ self.round16.round16[2].country_getter(),self.round16.round16[0],self.round16.round16[2], self.round16)
+        self.sixmatch1team1re.configure(text=self.round16.result[0]["Goals"])
+        self.sixmatch1team2re.configure(text=self.round16.result[2]["Goals"])
+
+
+    def updateround16(self,round16):
+        
+        self.sixmatch2team1re.configure(text=round16.result[4]["Goals"])
+        self.sixmatch2team2re.configure(text=round16.result[6]["Goals"])
+        self.sixmatch3team1re.configure(text=round16.result[8]["Goals"])
+        self.sixmatch3team2re.configure(text=round16.result[10]["Goals"])
+        self.sixmatch4team1re.configure(text=round16.result[12]["Goals"])
+        self.sixmatch4team2re.configure(text=round16.result[14]["Goals"])
+        self.sixmatch5team1re.configure(text=round16.result[15]["Goals"])
+        self.sixmatch5team2re.configure(text=round16.result[13]["Goals"])
+        self.sixmatch6team1re.configure(text=round16.result[11]["Goals"])
+        self.sixmatch6team2re.configure(text=round16.result[9]["Goals"])
+        self.sixmatch7team1re.configure(text=round16.result[7]["Goals"])
+        self.sixmatch7team2re.configure(text=round16.result[5]["Goals"])
+        self.sixmatch8team1re.configure(text=round16.result[3]["Goals"])
+        self.sixmatch8team2re.configure(text=round16.result[1]["Goals"])
 
 if __name__ == "__main__":
     app = App()

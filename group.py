@@ -57,9 +57,9 @@ class Group():
 
         for key in self._group:
             if self._group[key][1]["Pts"] == winner1:
-                winners.append(key)
+                winners.append(self._group[key][0])
             if self._group[key][1]["Pts"] == winner2:
-                winners.append(key)
+                winners.append(self._group[key][0])
 
 
         return winners
