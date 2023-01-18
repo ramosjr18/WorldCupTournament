@@ -24,7 +24,7 @@ class App(customtkinter.CTk):
         self.geometry(f"{914}x{601}")
         #self.iconbitmap("logoico.ico")
 
-        # configure grid layout (4x4)
+        # configure grid layout 
         self.grid_columnconfigure((4), weight=1)
         self.grid_rowconfigure((0, 1, 2, 3), weight=1)
 
@@ -429,7 +429,7 @@ class App(customtkinter.CTk):
         self.nextEtage = customtkinter.CTkButton(master=self.groupEtage_Frame, text="Next", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent)
         self.nextEtage.grid(row=6, column=0, columnspan= 2, padx=(20, 20), pady=(10, 10))
 
-        #Group etage 2 Frame
+        #Group etage Frame
         self.groupEtage2_Frame = customtkinter.CTkFrame(self)
         self.groupEtage2_Frame.grid(row=0, column=1, columnspan=4, rowspan=5, padx=(20, 20), pady=(10, 10), sticky="nsew")
         self.groupEtage2_Frame.grid_columnconfigure((0,1), weight=1)
@@ -955,7 +955,7 @@ class App(customtkinter.CTk):
         self.continuebutton = customtkinter.CTkButton(master=self.AddTeams_Frame, text="Continue", text_color=("gray10", "#DCE4EE"), command=self.Addteams2)
         self.continuebutton.grid(row=4, column=2, columnspan=2, padx=(20, 10), pady=(10, 20), sticky="nsew")
 
-        #Frame to add Teams 2
+        #Frame to add Teams 
         self.AddTeams2_Frame = tkinter.Frame(self)
         self.AddTeams2_Frame.grid(row=0, column=1,  columnspan=4, rowspan=4, padx=(0, 0), pady=(0, 0), sticky="nsew")
         self.AddTeams2_Frame.grid_columnconfigure((0,1,2,3,4), weight=1)
@@ -1218,7 +1218,6 @@ class App(customtkinter.CTk):
             self.labelTeamHthree.configure(text=self.teams[30])
             self.labelTeamHfour.configure(text=self.teams[31])
 
-            #sends you back to group Etage page
             self.select_frame_by_name("groupEtage")
 
         self.saveButton = customtkinter.CTkButton(master=self.AddTeams2_Frame, text="Save", text_color=("gray10", "#DCE4EE"), command=SaveTeams)
@@ -1605,7 +1604,6 @@ class App(customtkinter.CTk):
         else:
             self.final_Frame.grid_forget()
 
-    #funtions to change pages
     #main page function
     def homepage(self):
         self.select_frame_by_name("home")
@@ -1644,8 +1642,6 @@ class App(customtkinter.CTk):
 
 
 
-    #   Funciones de los botenes de la interfaz grafica
-    #   funcion para cambiar la apariencia de la app
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
 
@@ -1672,7 +1668,6 @@ class App(customtkinter.CTk):
 
         self.groups = main.add_teams_list(teams)
             
-        #Update team Labels for actual names 
         #Group A
         self.labelTeamAone.configure(text=teams[0])
         self.labelTeamAtwo.configure(text=teams[1])
@@ -1769,7 +1764,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 1
         #index 0 vs 1
-        self.ask_question(self.groups[0].get_teams()[0] +" vs "+ self.groups[0].get_teams()[1],self.groups[0].get_teams()[0],self.groups[0].get_teams()[1], self.groups[0])
+        self.ask_question(self.groups[0].get_teams()[0] + " vs "+ self.groups[0].get_teams()[1],self.groups[0].get_teams()[0],self.groups[0].get_teams()[1], self.groups[0])
         #update the default label variables for team 1
         self.labelPjAone.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[0])[0].match_Played_getter())
         self.labelgroupAwone.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[0])[0].match_won_getter())
