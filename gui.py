@@ -2,7 +2,7 @@ import tkinter
 import tkinter.messagebox as messagebox
 import customtkinter
 import customtkinter as ctk
-import os
+import random
 import main
 import team as tm
 import group as grp
@@ -10,7 +10,6 @@ import round16 as rd
 import qfinal as qf
 import sfinal as sf
 import final as fn
-from PIL import Image
 
 # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_appearance_mode("System")
@@ -182,7 +181,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group A
         self.AddResultsButton = customtkinter.CTkButton(self.groupA_frame, text="Add Results", command=self.get_input_Group_A)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupA_frame, text="Auto Generate", command=self.AutoGenerateResultsA)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
         
         #Group etage Frame for group B
         self.groupB_frame = customtkinter.CTkFrame(self.groupEtage_Frame)
@@ -265,7 +267,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group B
         self.AddResultsButton = customtkinter.CTkButton(self.groupB_frame, text="Add Results", command=self.get_input_Group_B)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupB_frame, text="Auto Generate", command=self.get_input_Group_B1)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
 
         #Group etage Frame for group C
         self.groupC_frame = customtkinter.CTkFrame(self.groupEtage_Frame)
@@ -347,7 +352,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group C
         self.AddResultsButton = customtkinter.CTkButton(self.groupC_frame, text="Add Results", command=self.get_input_Group_C)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupC_frame, text="Auto Generate", command=self.get_input_Group_C1)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
 
         #Group etage Frame for group D
         self.groupD_frame = customtkinter.CTkFrame(self.groupEtage_Frame)
@@ -429,7 +437,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group D
         self.AddResultsButton = customtkinter.CTkButton(self.groupD_frame, text="Add Results", command=self.get_input_Group_D)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupD_frame, text="Auto Generate", command=self.get_input_Group_D1)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
 
         #bottom buttom to continue seeing
         self.nextEtage = customtkinter.CTkButton(master=self.groupEtage_Frame, text="Next", text_color=("gray10", "#DCE4EE"), command=self.NextButtonEvent)
@@ -523,7 +534,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group E
         self.AddResultsButton = customtkinter.CTkButton(self.groupE_frame, text="Add Results", command=self.get_input_Group_E)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupE_frame, text="Auto Generate", command=self.get_input_Group_E1)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
 
         #Group etage Frame for group F
         self.groupF_frame = customtkinter.CTkFrame(self.groupEtage2_Frame)
@@ -605,7 +619,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group F
         self.AddResultsButton = customtkinter.CTkButton(self.groupF_frame, text="Add Results", command=self.get_input_Group_F)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupF_frame, text="Auto Generate", command=self.get_input_Group_F1)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
 
         #Group etage Frame for group G
         self.groupG_frame = customtkinter.CTkFrame(self.groupEtage2_Frame)
@@ -687,7 +704,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group G
         self.AddResultsButton = customtkinter.CTkButton(self.groupG_frame, text="Add Results", command=self.get_input_Group_G)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupG_frame, text="Auto Generate", command=self.get_input_Group_G1)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
 
         #Group etage Frame for group H
         self.groupH_frame = customtkinter.CTkFrame(self.groupEtage2_Frame)
@@ -769,7 +789,10 @@ class App(customtkinter.CTk):
 
         #Button to Add Results Group H
         self.AddResultsButton = customtkinter.CTkButton(self.groupH_frame, text="Add Results", command=self.get_input_Group_H)
-        self.AddResultsButton.grid(row=6, column=1, columnspan=3)
+        self.AddResultsButton.grid(row=6, column=0, columnspan=1)
+        #Button to Add Results Group A
+        self.AddResultsButton = customtkinter.CTkButton(self.groupH_frame, text="Auto Generate", command=self.get_input_Group_H1)
+        self.AddResultsButton.grid(row=6, column=3, columnspan=4)
 
         #bottom buttom to go Back
         self.nextEtage = customtkinter.CTkButton(master=self.groupEtage2_Frame, text="Back", text_color=("gray10", "#DCE4EE"), command=self.BackButtonEvent)
@@ -1256,8 +1279,6 @@ class App(customtkinter.CTk):
         self.sixmatch1team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch1team2re = customtkinter.CTkLabel(self.sixmatch1, text="0")
         self.sixmatch1team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-
-       
         self.sixmatch1teamsave = customtkinter.CTkButton(self.sixmatch1, text="Enter Result", command=self.get_input_round161)
         self.sixmatch1teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
@@ -1276,7 +1297,7 @@ class App(customtkinter.CTk):
         self.sixmatch2team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch2team2re = customtkinter.CTkLabel(self.sixmatch2, text="0")
         self.sixmatch2team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch2teamsave = customtkinter.CTkButton(self.sixmatch2, text="Enter Result")
+        self.sixmatch2teamsave = customtkinter.CTkButton(self.sixmatch2, text="Enter Result",command=self.get_input_round162)
         self.sixmatch2teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1294,7 +1315,7 @@ class App(customtkinter.CTk):
         self.sixmatch3team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch3team2re = customtkinter.CTkLabel(self.sixmatch3, text="0")
         self.sixmatch3team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch3teamsave = customtkinter.CTkButton(self.sixmatch3, text="Enter Result")
+        self.sixmatch3teamsave = customtkinter.CTkButton(self.sixmatch3, text="Enter Result",command=self.get_input_round163)
         self.sixmatch3teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1312,7 +1333,7 @@ class App(customtkinter.CTk):
         self.sixmatch4team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch4team2re = customtkinter.CTkLabel(self.sixmatch4, text="0")
         self.sixmatch4team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch4teamsave = customtkinter.CTkButton(self.sixmatch4, text="Enter Result")
+        self.sixmatch4teamsave = customtkinter.CTkButton(self.sixmatch4, text="Enter Result",command=self.get_input_round164)
         self.sixmatch4teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entr
@@ -1330,7 +1351,7 @@ class App(customtkinter.CTk):
         self.sixmatch5team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch5team2re = customtkinter.CTkLabel(self.sixmatch5, text="0")
         self.sixmatch5team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch5teamsave = customtkinter.CTkButton(self.sixmatch5, text="Enter Result")
+        self.sixmatch5teamsave = customtkinter.CTkButton(self.sixmatch5, text="Enter Result",command=self.get_input_round165)
         self.sixmatch5teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1348,7 +1369,7 @@ class App(customtkinter.CTk):
         self.sixmatch6team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch6team2re = customtkinter.CTkLabel(self.sixmatch6, text="0")
         self.sixmatch6team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch6teamsave = customtkinter.CTkButton(self.sixmatch6, text="Enter Result")
+        self.sixmatch6teamsave = customtkinter.CTkButton(self.sixmatch6, text="Enter Result",command=self.get_input_round166)
         self.sixmatch6teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1366,7 +1387,7 @@ class App(customtkinter.CTk):
         self.sixmatch7team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch7team2re = customtkinter.CTkLabel(self.sixmatch7, text="0")
         self.sixmatch7team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch7teamsave = customtkinter.CTkButton(self.sixmatch7, text="Enter Result")
+        self.sixmatch7teamsave = customtkinter.CTkButton(self.sixmatch7, text="Enter Result",command=self.get_input_round167)
         self.sixmatch7teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1384,7 +1405,7 @@ class App(customtkinter.CTk):
         self.sixmatch8team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.sixmatch8team2re = customtkinter.CTkLabel(self.sixmatch8, text="0")
         self.sixmatch8team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.sixmatch8teamsave = customtkinter.CTkButton(self.sixmatch8, text="Enter Result")
+        self.sixmatch8teamsave = customtkinter.CTkButton(self.sixmatch8, text="Enter Result",command=self.get_input_round168)
         self.sixmatch8teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         #8 round Frame
@@ -1648,6 +1669,9 @@ class App(customtkinter.CTk):
         self.sixmatch8team1.configure(text=f"{self.round16.getteam(3)}")
         self.sixmatch8team2.configure(text=f"{self.round16.getteam(1)}")
 
+        print(self.round16.round16)
+        print(self.round16.result)
+
         self.select_frame_by_name("sixteenround")
 
 
@@ -1772,7 +1796,7 @@ class App(customtkinter.CTk):
 
         compare_numbers(int(answer), int(answer2))
 
-    def AutoGenerateResults(self):
+    def AutoGenerateResultsA(self):
  
         self.AutoGenerate(self.groups[0].get_teams()[0] + " vs "+ self.groups[0].get_teams()[1],self.groups[0].get_teams()[0],self.groups[0].get_teams()[1], self.groups[0])
 
@@ -1788,7 +1812,7 @@ class App(customtkinter.CTk):
         self.labelTeamAdtwo.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[1])[0].match_drawed_getter())
         self.labelPtsAtwo.configure(text=self.groups[0].get_points(self.groups[0].get_teams()[1]))
 
-        self.ask_question(self.groups[0].get_teams()[0] +" vs "+ self.groups[0].get_teams()[2],self.groups[0].get_teams()[0],self.groups[0].get_teams()[2], self.groups[0])
+        self.AutoGenerate(self.groups[0].get_teams()[0] +" vs "+ self.groups[0].get_teams()[2],self.groups[0].get_teams()[0],self.groups[0].get_teams()[2], self.groups[0])
         #update the default label variables for team 1
         self.labelPjAone.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[0])[0].match_Played_getter())
         self.labelgroupAwone.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[0])[0].match_won_getter())
@@ -1804,7 +1828,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 3
         #index 0 vs 3
-        self.ask_question(self.groups[0].get_teams()[0] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[0],self.groups[0].get_teams()[3], self.groups[0])
+        self.AutoGenerate(self.groups[0].get_teams()[0] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[0],self.groups[0].get_teams()[3], self.groups[0])
         #update the default label variables for team 1
         self.labelPjAone.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[0])[0].match_Played_getter())
         self.labelgroupAwone.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[0])[0].match_won_getter())
@@ -1820,7 +1844,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 4
         #index 1 vs 2
-        self.ask_question(self.groups[0].get_teams()[1] +" vs "+ self.groups[0].get_teams()[2],self.groups[0].get_teams()[1],self.groups[0].get_teams()[2], self.groups[0])
+        self.AutoGenerate(self.groups[0].get_teams()[1] +" vs "+ self.groups[0].get_teams()[2],self.groups[0].get_teams()[1],self.groups[0].get_teams()[2], self.groups[0])
         #update the default label variables for team 1
         self.labelPjAtwo.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[1])[0].match_Played_getter())
         self.labelgroupAwtwo.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[1])[0].match_won_getter())
@@ -1836,7 +1860,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 5
         #index 1 vs 3
-        self.ask_question(self.groups[0].get_teams()[1] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[1],self.groups[0].get_teams()[3], self.groups[0])
+        self.AutoGenerate(self.groups[0].get_teams()[1] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[1],self.groups[0].get_teams()[3], self.groups[0])
         #update the default label variables for team 1
         self.labelPjAtwo.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[1])[0].match_Played_getter())
         self.labelgroupAwtwo.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[1])[0].match_won_getter())
@@ -1852,7 +1876,7 @@ class App(customtkinter.CTk):
 
         #ask question for match 6
         #index 2 vs 3
-        self.ask_question(self.groups[0].get_teams()[2] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[2],self.groups[0].get_teams()[3], self.groups[0])
+        self.AutoGenerate(self.groups[0].get_teams()[2] +" vs "+ self.groups[0].get_teams()[3],self.groups[0].get_teams()[2],self.groups[0].get_teams()[3], self.groups[0])
         #update the default label variables for team 1
         self.labelPjAthree.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[2])[0].match_Played_getter())
         self.labelgroupAwthree.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[2])[0].match_won_getter())
@@ -1865,6 +1889,694 @@ class App(customtkinter.CTk):
         self.labelTeamAlfour.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[3])[0].match_lost_getter())
         self.labelTeamAdfour.configure(text=self.groups[0].get_team(self.groups[0].get_teams()[3])[0].match_drawed_getter())
         self.labelPtsAfour.configure(text=self.groups[0].get_points(self.groups[0].get_teams()[3]))
+
+
+    def get_input_Group_B1(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.AutoGenerate(self.groups[1].get_teams()[0] +" vs "+ self.groups[1].get_teams()[1],self.groups[1].get_teams()[0],self.groups[1].get_teams()[1], self.groups[1])
+        #update the default label variables for team 1
+        self.labelPjBone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupBwone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_won_getter())
+        self.labelTeamBlone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamBdone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsBone.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjBtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupBwtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_won_getter())
+        self.labelTeamBltwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamBdtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsBtwo.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[1]))
+
+        #ask question for match 2
+        #index 0 vs 2
+        self.AutoGenerate(self.groups[1].get_teams()[0] +" vs "+ self.groups[1].get_teams()[2],self.groups[1].get_teams()[0],self.groups[1].get_teams()[2], self.groups[1])
+        #update the default label variables for team 1
+        self.labelPjBone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupBwone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_won_getter())
+        self.labelTeamBlone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamBdone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsBone.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjBthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupBwthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_won_getter())
+        self.labelTeamBlthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamBdthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsBthree.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[2]))
+
+        #ask question for match 3
+        #index 0 vs 3
+        self.AutoGenerate(self.groups[1].get_teams()[0] +" vs "+ self.groups[1].get_teams()[3],self.groups[1].get_teams()[0],self.groups[1].get_teams()[3], self.groups[1])
+        #update the default label variables for team 1
+        self.labelPjBone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupBwone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_won_getter())
+        self.labelTeamBlone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamBdone.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsBone.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjBfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupBwfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_won_getter())
+        self.labelTeamBlfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamBdfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsBfour.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[3]))
+
+        #ask question for match 4
+        #index 1 vs 2
+        self.AutoGenerate(self.groups[1].get_teams()[1] +" vs "+ self.groups[1].get_teams()[2],self.groups[1].get_teams()[1],self.groups[1].get_teams()[2], self.groups[1])
+        #update the default label variables for team 1
+        self.labelPjBtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupBwtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_won_getter())
+        self.labelTeamBltwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamBdtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsBtwo.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjBthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupBwthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_won_getter())
+        self.labelTeamBlthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamBdthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsBthree.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[2]))
+
+        #ask question for match 5
+        #index 1 vs 3
+        self.AutoGenerate(self.groups[1].get_teams()[1] +" vs "+ self.groups[1].get_teams()[3],self.groups[1].get_teams()[1],self.groups[1].get_teams()[3], self.groups[1])
+        #update the default label variables for team 1
+        self.labelPjBtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupBwtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_won_getter())
+        self.labelTeamBltwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamBdtwo.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsBtwo.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjBfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupBwfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_won_getter())
+        self.labelTeamBlfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamBdfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsBfour.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[3]))
+
+        #ask question for match 6
+        #index 2 vs 3
+        self.AutoGenerate(self.groups[1].get_teams()[2] +" vs "+ self.groups[1].get_teams()[3],self.groups[1].get_teams()[2],self.groups[1].get_teams()[3], self.groups[1])
+        #update the default label variables for team 1
+        self.labelPjBthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupBwthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_won_getter())
+        self.labelTeamBlthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamBdthree.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsBthree.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[2]))
+        #update the default label variables for team 2
+        self.labelPjBfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupBwfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_won_getter())
+        self.labelTeamBlfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamBdfour.configure(text=self.groups[1].get_team(self.groups[1].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsBfour.configure(text=self.groups[1].get_points(self.groups[1].get_teams()[3]))
+
+    def get_input_Group_C1(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.AutoGenerate(self.groups[2].get_teams()[0] +" vs "+ self.groups[2].get_teams()[1],self.groups[2].get_teams()[0],self.groups[2].get_teams()[1], self.groups[2])
+        #update the default label variables for team 1
+        self.labelPjCone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupCwone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_won_getter())
+        self.labelTeamClone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamCdone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsCone.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjCtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupCwtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_won_getter())
+        self.labelTeamCltwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamCdtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsCtwo.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[1]))
+
+        #ask question for match 2
+        #index 0 vs 2
+        self.AutoGenerate(self.groups[2].get_teams()[0] +" vs "+ self.groups[2].get_teams()[2],self.groups[2].get_teams()[0],self.groups[2].get_teams()[2], self.groups[2])
+        #update the default label variables for team 1
+        self.labelPjCone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupCwone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_won_getter())
+        self.labelTeamClone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamCdone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsCone.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjCthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupCwthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_won_getter())
+        self.labelTeamClthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamCdthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsCthree.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[2]))
+
+        #ask question for match 3
+        #index 0 vs 3
+        self.AutoGenerate(self.groups[2].get_teams()[0] +" vs "+ self.groups[2].get_teams()[3],self.groups[2].get_teams()[0],self.groups[2].get_teams()[3], self.groups[2])
+        #update the default label variables for team 1
+        self.labelPjCone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupCwone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_won_getter())
+        self.labelTeamClone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamCdone.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsCone.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjCfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupCwfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_won_getter())
+        self.labelTeamClfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamCdfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsCfour.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[3]))
+
+        #ask question for match 4
+        #index 1 vs 2
+        self.AutoGenerate(self.groups[2].get_teams()[1] +" vs "+ self.groups[2].get_teams()[2],self.groups[2].get_teams()[1],self.groups[2].get_teams()[2], self.groups[2])
+        #update the default label variables for team 1
+        self.labelPjCtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupCwtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_won_getter())
+        self.labelTeamCltwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamCdtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsCtwo.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjCthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupCwthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_won_getter())
+        self.labelTeamClthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamCdthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsCthree.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[2]))
+
+        #ask question for match 5
+        #index 1 vs 3
+        self.AutoGenerate(self.groups[2].get_teams()[1] +" vs "+ self.groups[2].get_teams()[3],self.groups[2].get_teams()[1],self.groups[2].get_teams()[3], self.groups[2])
+        #update the default label variables for team 1
+        self.labelPjCtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupCwtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_won_getter())
+        self.labelTeamCltwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamCdtwo.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsCtwo.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjCfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupCwfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_won_getter())
+        self.labelTeamClfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamCdfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsCfour.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[3]))
+
+        #ask question for match 6
+        #index 2 vs 3
+        self.AutoGenerate(self.groups[2].get_teams()[2] +" vs "+ self.groups[2].get_teams()[3],self.groups[2].get_teams()[2],self.groups[2].get_teams()[3], self.groups[2])
+        #update the default label variables for team 1
+        self.labelPjCthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupCwthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_won_getter())
+        self.labelTeamClthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamCdthree.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsCthree.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[2]))
+        #update the default label variables for team 2
+        self.labelPjCfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupCwfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_won_getter())
+        self.labelTeamClfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamCdfour.configure(text=self.groups[2].get_team(self.groups[2].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsCfour.configure(text=self.groups[2].get_points(self.groups[2].get_teams()[3]))
+
+    def get_input_Group_D1(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.AutoGenerate(self.groups[3].get_teams()[0] +" vs "+ self.groups[3].get_teams()[1],self.groups[3].get_teams()[0],self.groups[3].get_teams()[1], self.groups[3])
+        #update the default label variables for team 1
+        self.labelPjDone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupDwone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_won_getter())
+        self.labelTeamDlone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamDdone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsDone.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjDtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupDwtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_won_getter())
+        self.labelTeamDltwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamDdtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsDtwo.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[1]))
+
+        #ask question for match 2
+        #index 0 vs 2
+        self.AutoGenerate(self.groups[3].get_teams()[0] +" vs "+ self.groups[3].get_teams()[2],self.groups[3].get_teams()[0],self.groups[3].get_teams()[2], self.groups[3])
+        #update the default label variables for team 1
+        self.labelPjDone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupDwone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_won_getter())
+        self.labelTeamDlone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamDdone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsDone.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjDthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupDwthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_won_getter())
+        self.labelTeamDlthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamDdthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsDthree.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[2]))
+
+        #ask question for match 3
+        #index 0 vs 3
+        self.AutoGenerate(self.groups[3].get_teams()[0] +" vs "+ self.groups[3].get_teams()[3],self.groups[3].get_teams()[0],self.groups[3].get_teams()[3], self.groups[3])
+        #update the default label variables for team 1
+        self.labelPjDone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupDwone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_won_getter())
+        self.labelTeamDlone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamDdone.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsDone.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjDfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupDwfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_won_getter())
+        self.labelTeamDlfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamDdfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsDfour.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[3]))
+
+        #ask question for match 4
+        #index 1 vs 2
+        self.AutoGenerate(self.groups[3].get_teams()[1] +" vs "+ self.groups[3].get_teams()[2],self.groups[3].get_teams()[1],self.groups[3].get_teams()[2], self.groups[3])
+        #update the default label variables for team 1
+        self.labelPjDtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupDwtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_won_getter())
+        self.labelTeamDltwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamDdtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsDtwo.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjDthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupDwthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_won_getter())
+        self.labelTeamDlthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamDdthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsDthree.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[2]))
+
+        #ask question for match 5
+        #index 1 vs 3
+        self.AutoGenerate(self.groups[3].get_teams()[1] +" vs "+ self.groups[3].get_teams()[3],self.groups[3].get_teams()[1],self.groups[3].get_teams()[3], self.groups[3])
+        #update the default label variables for team 1
+        self.labelPjDtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupDwtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_won_getter())
+        self.labelTeamDltwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamDdtwo.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsDtwo.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjDfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupDwfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_won_getter())
+        self.labelTeamDlfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamDdfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsDfour.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[3]))
+
+        #ask question for match 6
+        #index 2 vs 3
+        self.AutoGenerate(self.groups[3].get_teams()[2] +" vs "+ self.groups[3].get_teams()[3],self.groups[3].get_teams()[2],self.groups[3].get_teams()[3], self.groups[3])
+        #update the default label variables for team 1
+        self.labelPjDthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupDwthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_won_getter())
+        self.labelTeamDlthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamDdthree.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsDthree.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[2]))
+        #update the default label variables for team 2
+        self.labelPjDfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupDwfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_won_getter())
+        self.labelTeamDlfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamDdfour.configure(text=self.groups[3].get_team(self.groups[3].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsDfour.configure(text=self.groups[3].get_points(self.groups[3].get_teams()[3]))
+
+    def get_input_Group_E1(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.AutoGenerate(self.groups[4].get_teams()[0] +" vs "+ self.groups[4].get_teams()[1],self.groups[4].get_teams()[0],self.groups[4].get_teams()[1], self.groups[4])
+        #update the default label variables for team 1
+        self.labelPjEone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupEwone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_won_getter())
+        self.labelTeamElone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamEdone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsEone.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjEtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupEwtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_won_getter())
+        self.labelTeamEltwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamEdtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsEtwo.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[1]))
+
+        #ask question for match 2
+        #index 0 vs 2
+        self.AutoGenerate(self.groups[4].get_teams()[0] +" vs "+ self.groups[4].get_teams()[2],self.groups[4].get_teams()[0],self.groups[4].get_teams()[2], self.groups[4])
+        #update the default label variables for team 1
+        self.labelPjEone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupEwone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_won_getter())
+        self.labelTeamElone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamEdone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsEone.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjEthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupEwthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_won_getter())
+        self.labelTeamElthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamEdthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsEthree.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[2]))
+
+        #ask question for match 3
+        #index 0 vs 3
+        self.AutoGenerate(self.groups[4].get_teams()[0] +" vs "+ self.groups[4].get_teams()[3],self.groups[4].get_teams()[0],self.groups[4].get_teams()[3], self.groups[4])
+        #update the default label variables for team 1
+        self.labelPjEone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupEwone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_won_getter())
+        self.labelTeamElone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamEdone.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsEone.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjEfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupEwfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_won_getter())
+        self.labelTeamElfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamEdfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsEfour.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[3]))
+
+        #ask question for match 4
+        #index 1 vs 2
+        self.AutoGenerate(self.groups[4].get_teams()[1] +" vs "+ self.groups[4].get_teams()[2],self.groups[4].get_teams()[1],self.groups[4].get_teams()[2], self.groups[4])
+        #update the default label variables for team 1
+        self.labelPjEtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupEwtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_won_getter())
+        self.labelTeamEltwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamEdtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsEtwo.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjEthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupEwthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_won_getter())
+        self.labelTeamElthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamEdthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsEthree.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[2]))
+
+        #ask question for match 5
+        #index 1 vs 3
+        self.AutoGenerate(self.groups[4].get_teams()[1] +" vs "+ self.groups[4].get_teams()[3],self.groups[4].get_teams()[1],self.groups[4].get_teams()[3], self.groups[4])
+        #update the default label variables for team 1
+        self.labelPjEtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupEwtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_won_getter())
+        self.labelTeamEltwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamEdtwo.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsEtwo.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjEfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupEwfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_won_getter())
+        self.labelTeamElfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamEdfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsEfour.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[3]))
+
+        #ask question for match 6
+        #index 2 vs 3
+        self.AutoGenerate(self.groups[4].get_teams()[2] +" vs "+ self.groups[4].get_teams()[3],self.groups[4].get_teams()[2],self.groups[4].get_teams()[3], self.groups[4])
+        #update the default label variables for team 1
+        self.labelPjEthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupEwthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_won_getter())
+        self.labelTeamElthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamEdthree.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsEthree.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[2]))
+        #update the default label variables for team 2
+        self.labelPjEfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupEwfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_won_getter())
+        self.labelTeamElfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamEdfour.configure(text=self.groups[4].get_team(self.groups[4].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsEfour.configure(text=self.groups[4].get_points(self.groups[4].get_teams()[3]))
+
+    def get_input_Group_F1(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.AutoGenerate(self.groups[5].get_teams()[0] +" vs "+ self.groups[5].get_teams()[1],self.groups[5].get_teams()[0],self.groups[5].get_teams()[1], self.groups[5])
+        #update the default label variables for team 1
+        self.labelPjFone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupFwone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_won_getter())
+        self.labelTeamFlone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamFdone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsFone.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjFtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupFwtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_won_getter())
+        self.labelTeamFltwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamFdtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsFtwo.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[1]))
+
+        #ask question for match 2
+        #index 0 vs 2
+        self.AutoGenerate(self.groups[5].get_teams()[0] +" vs "+ self.groups[5].get_teams()[2],self.groups[5].get_teams()[0],self.groups[5].get_teams()[2], self.groups[5])
+        #update the default label variables for team 1
+        self.labelPjFone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupFwone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_won_getter())
+        self.labelTeamFlone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamFdone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsFone.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjFthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupFwthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_won_getter())
+        self.labelTeamFlthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamFdthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsFthree.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[2]))
+
+        #ask question for match 3
+        #index 0 vs 3
+        self.AutoGenerate(self.groups[5].get_teams()[0] +" vs "+ self.groups[5].get_teams()[3],self.groups[5].get_teams()[0],self.groups[5].get_teams()[3], self.groups[5])
+        #update the default label variables for team 1
+        self.labelPjFone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupFwone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_won_getter())
+        self.labelTeamFlone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamFdone.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsFone.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjFfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupFwfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_won_getter())
+        self.labelTeamFlfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamFdfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsFfour.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[3]))
+
+        #ask question for match 4
+        #index 1 vs 2
+        self.AutoGenerate(self.groups[5].get_teams()[1] +" vs "+ self.groups[5].get_teams()[2],self.groups[5].get_teams()[1],self.groups[5].get_teams()[2], self.groups[5])
+        #update the default label variables for team 1
+        self.labelPjFtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupFwtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_won_getter())
+        self.labelTeamFltwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamFdtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsFtwo.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjFthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupFwthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_won_getter())
+        self.labelTeamFlthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamFdthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsFthree.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[2]))
+
+        #ask question for match 5
+        #index 1 vs 3
+        self.AutoGenerate(self.groups[5].get_teams()[1] +" vs "+ self.groups[5].get_teams()[3],self.groups[5].get_teams()[1],self.groups[5].get_teams()[3], self.groups[5])
+        #update the default label variables for team 1
+        self.labelPjFtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupFwtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_won_getter())
+        self.labelTeamFltwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamFdtwo.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsFtwo.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjFfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupFwfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_won_getter())
+        self.labelTeamFlfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamFdfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsFfour.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[3]))
+
+        #ask question for match 6
+        #index 2 vs 3
+        self.AutoGenerate(self.groups[5].get_teams()[2] +" vs "+ self.groups[5].get_teams()[3],self.groups[5].get_teams()[2],self.groups[5].get_teams()[3], self.groups[5])
+        #update the default label variables for team 1
+        self.labelPjFthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupFwthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_won_getter())
+        self.labelTeamFlthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamFdthree.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsFthree.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[2]))
+        #update the default label variables for team 2
+        self.labelPjFfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupFwfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_won_getter())
+        self.labelTeamFlfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamFdfour.configure(text=self.groups[5].get_team(self.groups[5].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsFfour.configure(text=self.groups[5].get_points(self.groups[5].get_teams()[3]))
+
+    def get_input_Group_G1(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.AutoGenerate(self.groups[6].get_teams()[0] +" vs "+ self.groups[6].get_teams()[1],self.groups[6].get_teams()[0],self.groups[6].get_teams()[1], self.groups[6])
+        #update the default label variables for team 1
+        self.labelPjGone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupGwone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_won_getter())
+        self.labelTeamGlone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamGdone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsGone.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjGtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupGwtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_won_getter())
+        self.labelTeamGltwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamGdtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsGtwo.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[1]))
+
+        #ask question for match 2
+        #index 0 vs 2
+        self.AutoGenerate(self.groups[6].get_teams()[0] +" vs "+ self.groups[6].get_teams()[2],self.groups[6].get_teams()[0],self.groups[6].get_teams()[2], self.groups[6])
+        #update the default label variables for team 1
+        self.labelPjGone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupGwone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_won_getter())
+        self.labelTeamGlone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamGdone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsGone.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjGthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupGwthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_won_getter())
+        self.labelTeamGlthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamGdthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsGthree.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[2]))
+
+        #ask question for match 3
+        #index 0 vs 3
+        self.AutoGenerate(self.groups[6].get_teams()[0] +" vs "+ self.groups[6].get_teams()[3],self.groups[6].get_teams()[0],self.groups[6].get_teams()[3], self.groups[6])
+        #update the default label variables for team 1
+        self.labelPjGone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupGwone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_won_getter())
+        self.labelTeamGlone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamGdone.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsGone.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjGfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupGwfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_won_getter())
+        self.labelTeamGlfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamGdfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsGfour.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[3]))
+
+        #ask question for match 4
+        #index 1 vs 2
+        self.AutoGenerate(self.groups[6].get_teams()[1] +" vs "+ self.groups[6].get_teams()[2],self.groups[6].get_teams()[1],self.groups[6].get_teams()[2], self.groups[6])
+        #update the default label variables for team 1
+        self.labelPjGtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupGwtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_won_getter())
+        self.labelTeamGltwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamGdtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsGtwo.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjGthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupGwthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_won_getter())
+        self.labelTeamGlthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamGdthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsGthree.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[2]))
+
+        #ask question for match 5
+        #index 1 vs 3
+        self.AutoGenerate(self.groups[6].get_teams()[1] +" vs "+ self.groups[6].get_teams()[3],self.groups[6].get_teams()[1],self.groups[6].get_teams()[3], self.groups[6])
+        #update the default label variables for team 1
+        self.labelPjGtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupGwtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_won_getter())
+        self.labelTeamGltwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamGdtwo.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsGtwo.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjGfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupGwfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_won_getter())
+        self.labelTeamGlfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamGdfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsGfour.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[3]))
+
+        #ask question for match 6
+        #index 2 vs 3
+        self.AutoGenerate(self.groups[6].get_teams()[2] +" vs "+ self.groups[6].get_teams()[3],self.groups[6].get_teams()[2],self.groups[6].get_teams()[3], self.groups[6])
+        #update the default label variables for team 1
+        self.labelPjGthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupGwthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_won_getter())
+        self.labelTeamGlthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamGdthree.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsGthree.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[2]))
+        #update the default label variables for team 2
+        self.labelPjGfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupGwfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_won_getter())
+        self.labelTeamGlfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamGdfour.configure(text=self.groups[6].get_team(self.groups[6].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsGfour.configure(text=self.groups[6].get_points(self.groups[6].get_teams()[3]))
+
+    def get_input_Group_H1(self):
+
+        #ask question for match 1
+        #index 0 vs 1
+        self.AutoGenerate(self.groups[7].get_teams()[0] +" vs "+ self.groups[7].get_teams()[1],self.groups[7].get_teams()[0],self.groups[7].get_teams()[1], self.groups[7])
+        #update the default label variables for team 1
+        self.labelPjHone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupHwone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_won_getter())
+        self.labelTeamHlone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamHdone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsHone.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjHtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupHwtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_won_getter())
+        self.labelTeamHltwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamHdtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsHtwo.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[1]))
+
+        #ask question for match 2
+        #index 0 vs 2
+        self.AutoGenerate(self.groups[7].get_teams()[0] +" vs "+ self.groups[7].get_teams()[2],self.groups[7].get_teams()[0],self.groups[7].get_teams()[2], self.groups[7])
+        #update the default label variables for team 1
+        self.labelPjHone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupHwone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_won_getter())
+        self.labelTeamHlone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamHdone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsHone.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjHthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupHwthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_won_getter())
+        self.labelTeamHlthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamHdthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsHthree.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[2]))
+
+        #ask question for match 3
+        #index 0 vs 3
+        self.AutoGenerate(self.groups[7].get_teams()[0] +" vs "+ self.groups[7].get_teams()[3],self.groups[7].get_teams()[0],self.groups[7].get_teams()[3], self.groups[7])
+        #update the default label variables for team 1
+        self.labelPjHone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_Played_getter())
+        self.labelgroupHwone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_won_getter())
+        self.labelTeamHlone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_lost_getter())
+        self.labelTeamHdone.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[0])[0].match_drawed_getter())
+        self.labelPtsHone.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[0]))
+        #update the default label variables for team 2
+        self.labelPjHfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupHwfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_won_getter())
+        self.labelTeamHlfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamHdfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsHfour.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[3]))
+
+        #ask question for match 4
+        #index 1 vs 2
+        self.AutoGenerate(self.groups[7].get_teams()[1] +" vs "+ self.groups[7].get_teams()[2],self.groups[7].get_teams()[1],self.groups[7].get_teams()[2], self.groups[7])
+        #update the default label variables for team 1
+        self.labelPjHtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupHwtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_won_getter())
+        self.labelTeamHltwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamHdtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsHtwo.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjHthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupHwthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_won_getter())
+        self.labelTeamHlthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamHdthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsHthree.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[2]))
+
+        #ask question for match 5
+        #index 1 vs 3
+        self.AutoGenerate(self.groups[7].get_teams()[1] +" vs "+ self.groups[7].get_teams()[3],self.groups[7].get_teams()[1],self.groups[7].get_teams()[3], self.groups[7])
+        #update the default label variables for team 1
+        self.labelPjHtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_Played_getter())
+        self.labelgroupHwtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_won_getter())
+        self.labelTeamHltwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_lost_getter())
+        self.labelTeamHdtwo.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[1])[0].match_drawed_getter())
+        self.labelPtsHtwo.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[1]))
+        #update the default label variables for team 2
+        self.labelPjHfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupHwfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_won_getter())
+        self.labelTeamHlfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamHdfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsHfour.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[3]))
+
+        #ask question for match 6
+        #index 2 vs 3
+        self.AutoGenerate(self.groups[7].get_teams()[2] +" vs "+ self.groups[7].get_teams()[3],self.groups[7].get_teams()[2],self.groups[7].get_teams()[3], self.groups[7])
+        #update the default label variables for team 1
+        self.labelPjHthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_Played_getter())
+        self.labelgroupHwthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_won_getter())
+        self.labelTeamHlthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_lost_getter())
+        self.labelTeamHdthree.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[2])[0].match_drawed_getter())
+        self.labelPtsHthree.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[2]))
+        #update the default label variables for team 2
+        self.labelPjHfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_Played_getter())
+        self.labelgroupHwfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_won_getter())
+        self.labelTeamHlfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_lost_getter())
+        self.labelTeamHdfour.configure(text=self.groups[7].get_team(self.groups[7].get_teams()[3])[0].match_drawed_getter())
+        self.labelPtsHfour.configure(text=self.groups[7].get_points(self.groups[7].get_teams()[3]))
+
 
     def ask_question(self,question,team1,team2,group):
         top = ctk.CTkToplevel()
@@ -2729,31 +3441,57 @@ class App(customtkinter.CTk):
         top.wait_window()
 
     def get_input_round161(self):
-
         #ask question for match 1
         #index 0 vs 1
         self.ask_question_round16(self.round16.round16[0].country_getter() +" vs "+ self.round16.round16[2].country_getter(),self.round16.round16[0],self.round16.round16[2], self.round16)
         self.sixmatch1team1re.configure(text=self.round16.result[0]["Goals"])
         self.sixmatch1team2re.configure(text=self.round16.result[2]["Goals"])
 
-
-    def updateround16(self,round16):
+    def get_input_round162(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[4].country_getter() +" vs "+ self.round16.round16[6].country_getter(),self.round16.round16[4],self.round16.round16[6], self.round16)
+        self.sixmatch2team1re.configure(text=self.round16.result[4]["Goals"])
+        self.sixmatch2team2re.configure(text=self.round16.result[6]["Goals"])
+    def get_input_round163(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[8].country_getter() +" vs "+ self.round16.round16[10].country_getter(),self.round16.round16[8],self.round16.round16[10], self.round16)
+        self.sixmatch3team1re.configure(text=self.round16.result[8]["Goals"])
+        self.sixmatch3team2re.configure(text=self.round16.result[10]["Goals"])
+    def get_input_round164(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[12].country_getter() +" vs "+ self.round16.round16[14].country_getter(),self.round16.round16[12],self.round16.round16[14], self.round16)
+        self.sixmatch4team1re.configure(text=self.round16.result[12]["Goals"])
+        self.sixmatch4team2re.configure(text=self.round16.result[14]["Goals"])
+    def get_input_round165(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[15].country_getter() +" vs "+ self.round16.round16[13].country_getter(),self.round16.round16[15],self.round16.round16[13], self.round16)
+        self.sixmatch5team1re.configure(text=self.round16.result[15]["Goals"])
+        self.sixmatch5team2re.configure(text=self.round16.result[13]["Goals"])
+    def get_input_round166(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[11].country_getter() +" vs "+ self.round16.round16[9].country_getter(),self.round16.round16[11],self.round16.round16[9], self.round16)
+        self.sixmatch6team1re.configure(text=self.round16.result[11]["Goals"])
+        self.sixmatch6team2re.configure(text=self.round16.result[9]["Goals"])
+    def get_input_round167(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[7].country_getter() +" vs "+ self.round16.round16[5].country_getter(),self.round16.round16[7],self.round16.round16[5], self.round16)
+        self.sixmatch7team1re.configure(text=self.round16.result[7]["Goals"])
+        self.sixmatch7team2re.configure(text=self.round16.result[5]["Goals"])
+    def get_input_round168(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_round16(self.round16.round16[3].country_getter() +" vs "+ self.round16.round16[1].country_getter(),self.round16.round16[3],self.round16.round16[1], self.round16)
+        self.sixmatch8team1re.configure(text=self.round16.result[3]["Goals"])
+        self.sixmatch8team2re.configure(text=self.round16.result[1]["Goals"])
+ 
         
-        self.sixmatch2team1re.configure(text=round16.result[4]["Goals"])
-        self.sixmatch2team2re.configure(text=round16.result[6]["Goals"])
-        self.sixmatch3team1re.configure(text=round16.result[8]["Goals"])
-        self.sixmatch3team2re.configure(text=round16.result[10]["Goals"])
-        self.sixmatch4team1re.configure(text=round16.result[12]["Goals"])
-        self.sixmatch4team2re.configure(text=round16.result[14]["Goals"])
-        self.sixmatch5team1re.configure(text=round16.result[15]["Goals"])
-        self.sixmatch5team2re.configure(text=round16.result[13]["Goals"])
-        self.sixmatch6team1re.configure(text=round16.result[11]["Goals"])
-        self.sixmatch6team2re.configure(text=round16.result[9]["Goals"])
-        self.sixmatch7team1re.configure(text=round16.result[7]["Goals"])
-        self.sixmatch7team2re.configure(text=round16.result[5]["Goals"])
-        self.sixmatch8team1re.configure(text=round16.result[3]["Goals"])
-        self.sixmatch8team2re.configure(text=round16.result[1]["Goals"])
-
+        
 if __name__ == "__main__":
     app = App()
     app.mainloop()
