@@ -9,7 +9,7 @@ class Final():
     def addteams(self,sfinal):
         for team in sfinal.winners():
             self.final.append(team)
-        self.result.append({"Goals":0,"Won":False})
+            self.result.append({"Goals":0,"Won":False})
     
     def addresult(self,team,goal,won):
         for i in range(len(self.final)):

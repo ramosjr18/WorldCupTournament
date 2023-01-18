@@ -9,7 +9,7 @@ class Qfinal():
     def addteams(self,round16):
         for team in round16.winners():
             self.qfinal.append(team)
-        self.result.append({"Goals":0,"Won":False})
+            self.result.append({"Goals":0,"Won":False})
     
     def addresult(self,team,goal,won):
         

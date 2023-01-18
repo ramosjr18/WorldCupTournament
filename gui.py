@@ -9,6 +9,7 @@ import group as grp
 import round16 as rd
 import qfinal as qf
 import sfinal as sf
+import thirdplace as t3
 import final as fn
 
 # Modes: "System" (standard), "Dark", "Light"
@@ -21,6 +22,11 @@ class App(customtkinter.CTk):
 
     groups =[""]
     round16 = rd.Round16()
+    q = qf.Qfinal()
+    se = sf.Sfinal()
+    t3 = t3.thirdplace()
+    fn = fn.Final()
+
     def __init__(self):
         super().__init__()
 
@@ -1407,6 +1413,9 @@ class App(customtkinter.CTk):
         self.sixmatch8team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
         self.sixmatch8teamsave = customtkinter.CTkButton(self.sixmatch8, text="Enter Result",command=self.get_input_round168)
         self.sixmatch8teamsave.grid(row=3, column=0, columnspan=2, padx=(10, 10), pady=(0, 20), sticky="ew")
+        
+        self.nextEtage = customtkinter.CTkButton(master=self.sixteenround_Frame, text="Next Round", text_color=("gray10", "#DCE4EE"), command=self.eightround)
+        self.nextEtage.grid(row=3, column=0, columnspan= 2, padx=(20, 20), pady=(10, 10))
 
         #8 round Frame
         self.eightround_Frame = customtkinter.CTkFrame(self)
@@ -1431,7 +1440,7 @@ class App(customtkinter.CTk):
         self.eightmatch1team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.eightmatch1team2re = customtkinter.CTkLabel(self.eightmatch1, text="0")
         self.eightmatch1team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.eightmatch1teamsave = customtkinter.CTkButton(self.eightmatch1, text="Enter Result")
+        self.eightmatch1teamsave = customtkinter.CTkButton(self.eightmatch1, text="Enter Result", command=self.get_input_q61)
         self.eightmatch1teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1449,7 +1458,7 @@ class App(customtkinter.CTk):
         self.eightmatch2team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.eightmatch2team2re = customtkinter.CTkLabel(self.eightmatch2, text="0")
         self.eightmatch2team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.eightmatch2teamsave = customtkinter.CTkButton(self.eightmatch2, text="Enter Result")
+        self.eightmatch2teamsave = customtkinter.CTkButton(self.eightmatch2, text="Enter Result", command=self.get_input_q62)
         self.eightmatch2teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1467,7 +1476,7 @@ class App(customtkinter.CTk):
         self.eightmatch3team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.eightmatch3team2re = customtkinter.CTkLabel(self.eightmatch3, text="0")
         self.eightmatch3team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.eightmatch3teamsave = customtkinter.CTkButton(self.eightmatch3, text="Enter Result")
+        self.eightmatch3teamsave = customtkinter.CTkButton(self.eightmatch3, text="Enter Result", command=self.get_input_q63)
         self.eightmatch3teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1485,8 +1494,10 @@ class App(customtkinter.CTk):
         self.eightmatch4team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.eightmatch4team2re = customtkinter.CTkLabel(self.eightmatch4, text="0")
         self.eightmatch4team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.eightmatch4teamsave = customtkinter.CTkButton(self.eightmatch4, text="Enter Result")
+        self.eightmatch4teamsave = customtkinter.CTkButton(self.eightmatch4, text="Enter Result", command=self.get_input_q64)
         self.eightmatch4teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.nextEtage = customtkinter.CTkButton(master=self.eightround_Frame, text="Next Round", text_color=("gray10", "#DCE4EE"), command=self.semifinals)
+        self.nextEtage.grid(row=3, column=0, columnspan= 2, padx=(20, 20), pady=(10, 10))
 
         #Semifinals Frame
         self.semifinals_Frame = customtkinter.CTkFrame(self)
@@ -1511,7 +1522,7 @@ class App(customtkinter.CTk):
         self.semismatch1team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.semismatch1team2re = customtkinter.CTkLabel(self.semismatch1, text="0")
         self.semismatch1team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.semismatch1teamsave = customtkinter.CTkButton(self.semismatch1, text="Enter Result")
+        self.semismatch1teamsave = customtkinter.CTkButton(self.semismatch1, text="Enter Result", command=self.get_input_semis)
         self.semismatch1teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # create boxes for each entry
@@ -1529,8 +1540,10 @@ class App(customtkinter.CTk):
         self.semismatch2team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.semismatch2team2re = customtkinter.CTkLabel(self.semismatch2, text="0")
         self.semismatch2team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.semismatch2teamsave = customtkinter.CTkButton(self.semismatch2, text="Enter Result")
+        self.semismatch2teamsave = customtkinter.CTkButton(self.semismatch2, text="Enter Result",command=self.get_input_semis1)
         self.semismatch2teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.nextEtage = customtkinter.CTkButton(master=self.semifinals_Frame, text="Next Round", text_color=("gray10", "#DCE4EE"), command=self.thirdplace)
+        self.nextEtage.grid(row=3, column=0, columnspan= 2, padx=(20, 20), pady=(10, 10))
 
         #3rd Place Frame
         self.thirdplace_Frame = customtkinter.CTkFrame(self)
@@ -1554,8 +1567,10 @@ class App(customtkinter.CTk):
         self.thirdmatch1team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.thirdmatch1team2re = customtkinter.CTkLabel(self.thirdmatch1, text="0")
         self.thirdmatch1team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.thirdmatch1teamsave = customtkinter.CTkButton(self.thirdmatch1, text="Enter Result")
+        self.thirdmatch1teamsave = customtkinter.CTkButton(self.thirdmatch1, text="Enter Result", command=self.get_input_3rd)
         self.thirdmatch1teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
+        self.nextEtage = customtkinter.CTkButton(master=self.thirdplace_Frame, text="Next Round", text_color=("gray10", "#DCE4EE"), command=self.final)
+        self.nextEtage.grid(row=3, column=0, columnspan= 2, padx=(20, 20), pady=(10, 10))
 
         #Final Frame
         self.final_Frame = customtkinter.CTkFrame(self)
@@ -1579,7 +1594,7 @@ class App(customtkinter.CTk):
         self.finalmatch1team2.grid(row=2, column=0, padx=(10, 10), pady=(10, 10), sticky="ew")
         self.finalmatch1team2re = customtkinter.CTkLabel(self.finalmatch1, text="0")
         self.finalmatch1team2re.grid(row=2, column=1, padx=(10, 10), pady=(10, 10))
-        self.finalmatch1teamsave = customtkinter.CTkButton(self.finalmatch1, text="Enter Result")
+        self.finalmatch1teamsave = customtkinter.CTkButton(self.finalmatch1, text="Enter Result", command=self.get_input_final)
         self.finalmatch1teamsave.grid(row=3, column=0, columnspan=3, padx=(10, 10), pady=(0, 20), sticky="ew")
 
         # select default frame
@@ -1647,7 +1662,6 @@ class App(customtkinter.CTk):
 
     #group etage pagefunction
     def sixteenround(self):
-
         
         for group in self.groups:
             self.round16.addteams(group)
@@ -1669,26 +1683,56 @@ class App(customtkinter.CTk):
         self.sixmatch8team1.configure(text=f"{self.round16.getteam(3)}")
         self.sixmatch8team2.configure(text=f"{self.round16.getteam(1)}")
 
-        print(self.round16.round16)
-        print(self.round16.result)
 
         self.select_frame_by_name("sixteenround")
 
 
     #group etage pagefunction
     def eightround(self):
+
+        self.q.addteams(self.round16)
+
+        self.eightmatch1team1.configure(text=f"{self.q.qfinal[0].country_getter()}")
+        self.eightmatch1team2.configure(text=f"{self.q.qfinal[2].country_getter()}")
+        self.eightmatch2team1.configure(text=f"{self.q.qfinal[4].country_getter()}")
+        self.eightmatch2team2.configure(text=f"{self.q.qfinal[6].country_getter()}")
+        self.eightmatch3team1.configure(text=f"{self.q.qfinal[7].country_getter()}")
+        self.eightmatch3team2.configure(text=f"{self.q.qfinal[5].country_getter()}")
+        self.eightmatch4team1.configure(text=f"{self.q.qfinal[3].country_getter()}")
+        self.eightmatch4team2.configure(text=f"{self.q.qfinal[1].country_getter()}")
+
         self.select_frame_by_name("eightround")
 
     #group etage pagefunction
     def semifinals(self):
+
+        self.se.addteams(self.q)
+
+        self.semismatch1team1.configure(text=f"{self.se.sfinal[0].country_getter()}")
+        self.semismatch1team2.configure(text=f"{self.se.sfinal[2].country_getter()}")
+        self.semismatch2team1.configure(text=f"{self.se.sfinal[3].country_getter()}")
+        self.semismatch2team2.configure(text=f"{self.se.sfinal[1].country_getter()}")
+
         self.select_frame_by_name("semifinals")
 
     #group etage pagefunction
     def thirdplace(self):
+
+        self.t3.addteams(self.se)
+
+        self.thirdmatch1team1.configure(text=f"{self.t3.thirdplace[0].country_getter()}")
+        self.thirdmatch1team2.configure(text=f"{self.t3.thirdplace[1].country_getter()}")
+
         self.select_frame_by_name("thirdplace")
 
     #group etage pagefunction
     def final(self):
+
+        self.fn.addteams(self.se)
+
+        self.finalmatch1team1.configure(text=f"{self.fn.final[0].country_getter()}")
+        self.finalmatch1team2.configure(text=f"{self.fn.final[1].country_getter()}")
+
         self.select_frame_by_name("final")
 
     #Add teams page function
@@ -3446,7 +3490,6 @@ class App(customtkinter.CTk):
         self.ask_question_round16(self.round16.round16[0].country_getter() +" vs "+ self.round16.round16[2].country_getter(),self.round16.round16[0],self.round16.round16[2], self.round16)
         self.sixmatch1team1re.configure(text=self.round16.result[0]["Goals"])
         self.sixmatch1team2re.configure(text=self.round16.result[2]["Goals"])
-
     def get_input_round162(self):
         #ask question for match 1
         #index 0 vs 1
@@ -3490,8 +3533,130 @@ class App(customtkinter.CTk):
         self.sixmatch8team1re.configure(text=self.round16.result[3]["Goals"])
         self.sixmatch8team2re.configure(text=self.round16.result[1]["Goals"])
  
-        
-        
+    def ask_question_8(self,question,team1,team2,q87):
+        top = ctk.CTkToplevel()
+        top.title("Input")
+
+        label = ctk.CTkLabel(top, text=question)
+        label.pack()
+
+        entry = ctk.CTkEntry(top, placeholder_text="team 1 score")
+        entry.pack()
+
+        entry2 = ctk.CTkEntry(top, placeholder_text="team 2 score")
+        entry2.pack()
+
+        def submit():
+            answer = entry.get()
+            answer2 = entry2.get()
+            # print(group.get_teams())
+            def compare_numbers(a ,b):
+                if a > b:
+                    q87.addresult(team2,b,False)
+                    q87.addresult(team1,a,True)
+                else:
+                    q87.addresult(team2,b,True)
+                    q87.addresult(team1,a,False) 
+
+
+            compare_numbers(int(answer), int(answer2))
+            top.destroy()
+ 
+
+        submit_button = ctk.CTkButton(top, text="Submit", command=submit)
+        submit_button.pack()
+        top.wait_window()
+    
+    def get_input_q61(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_8(self.q.qfinal[0].country_getter() +" vs "+ self.q.qfinal[2].country_getter(),self.q.qfinal[0],self.q.qfinal[2], self.q)
+        self.eightmatch1team1re.configure(text=self.q.result[0]["Goals"])
+        self.eightmatch1team2re.configure(text=self.q.result[2]["Goals"])
+    def get_input_q62(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_8(self.q.qfinal[4].country_getter() +" vs "+ self.q.qfinal[6].country_getter(),self.q.qfinal[4],self.q.qfinal[6], self.q)
+        self.eightmatch2team1re.configure(text=self.q.result[4]["Goals"])
+        self.eightmatch2team2re.configure(text=self.q.result[6]["Goals"])
+    def get_input_q63(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_8(self.q.qfinal[7].country_getter() +" vs "+ self.q.qfinal[5].country_getter(),self.q.qfinal[7],self.q.qfinal[5], self.q)
+        self.eightmatch3team1re.configure(text=self.q.result[7]["Goals"])
+        self.eightmatch3team2re.configure(text=self.q.result[5]["Goals"])
+    def get_input_q64(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_8(self.q.qfinal[3].country_getter() +" vs "+ self.q.qfinal[1].country_getter(),self.q.qfinal[3],self.q.qfinal[1], self.q)
+        self.eightmatch4team1re.configure(text=self.q.result[3]["Goals"])
+        self.eightmatch4team2re.configure(text=self.q.result[1]["Goals"])
+
+    def ask_question_semis(self,question,team1,team2,semis):
+        top = ctk.CTkToplevel()
+        top.title("Input")
+
+        label = ctk.CTkLabel(top, text=question)
+        label.pack()
+
+        entry = ctk.CTkEntry(top, placeholder_text="team 1 score")
+        entry.pack()
+
+        entry2 = ctk.CTkEntry(top, placeholder_text="team 2 score")
+        entry2.pack()
+
+        def submit():
+            answer = entry.get()
+            answer2 = entry2.get()
+            # print(group.get_teams())
+            def compare_numbers(a ,b):
+                if a > b:
+                    semis.addresult(team2,b,False)
+                    semis.addresult(team1,a,True)
+                else:
+                    semis.addresult(team2,b,True)
+                    semis.addresult(team1,a,False) 
+
+
+            compare_numbers(int(answer), int(answer2))
+            top.destroy()
+ 
+
+        submit_button = ctk.CTkButton(top, text="Submit", command=submit)
+        submit_button.pack()
+        top.wait_window()
+    
+    def get_input_semis(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_semis(self.se.sfinal[0].country_getter() +" vs "+ self.se.sfinal[2].country_getter(),self.se.sfinal[0],self.se.sfinal[2], self.se)
+        self.semismatch1team1re.configure(text=self.se.result[0]["Goals"])
+        self.semismatch1team2re.configure(text=self.se.result[2]["Goals"])
+
+    def get_input_semis1(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_semis(self.se.sfinal[3].country_getter() +" vs "+ self.se.sfinal[1].country_getter(),self.se.sfinal[3],self.se.sfinal[1], self.se)
+        self.semismatch2team1re.configure(text=self.se.result[3]["Goals"])
+        self.semismatch2team2re.configure(text=self.se.result[1]["Goals"])
+    
+    
+    def get_input_3rd(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_semis(self.t3.thirdplace[0].country_getter() +" vs "+ self.t3.thirdplace[1].country_getter(),self.t3.thirdplace[0],self.t3.thirdplace[1], self.t3)
+        self.thirdmatch1team1re.configure(text=self.t3.result[0]["Goals"])
+        self.thirdmatch1team2re.configure(text=self.t3.result[1]["Goals"])
+
+    def get_input_final(self):
+        #ask question for match 1
+        #index 0 vs 1
+        self.ask_question_semis(self.fn.final[0].country_getter() +" vs "+ self.fn.final[1].country_getter(),self.fn.final[0],self.fn.final[1], self.fn)
+        self.finalmatch1team1re.configure(text=self.fn.result[0]["Goals"])
+        self.finalmatch1team2re.configure(text=self.fn.result[1]["Goals"])
+        messagebox.showinfo(title="Alert", message=("The Winner is: " + self.fn.winners()[0].country_getter()))
+
+
 if __name__ == "__main__":
     app = App()
     app.mainloop()

@@ -9,7 +9,7 @@ class Round16():
     def addteams(self,group):
         for team in group.winner():
             self.round16.append(team)
-        self.result.append({"Goals":0,"Won":False})
+            self.result.append({"Goals":0,"Won":False})
     
     def addresult(self,team,goal,won):
         

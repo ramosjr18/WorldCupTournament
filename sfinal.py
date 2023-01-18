@@ -9,7 +9,7 @@ class Sfinal():
     def addteams(self,qfinal):
         for team in qfinal.winners():
             self.sfinal.append(team)
-        self.result.append({"Goals":0,"Won":False})
+            self.result.append({"Goals":0,"Won":False})
     
     def addresult(self,team,goal,won):
         for i in range(len(self.sfinal)):
@@ -31,4 +31,4 @@ class Sfinal():
         for i in range(len(self.result)):
             if not (self.result[i]["Won"]):
                 lossers.append(self.sfinal[i])
-        return
+        return lossers
