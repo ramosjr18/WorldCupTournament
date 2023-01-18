@@ -767,7 +767,11 @@ class App(customtkinter.CTk):
 
         #bottom buttom to go Back
         self.nextEtage = customtkinter.CTkButton(master=self.groupEtage2_Frame, text="Back", text_color=("gray10", "#DCE4EE"), command=self.BackButtonEvent)
-        self.nextEtage.grid(row=6, column=0, columnspan= 2, padx=(20, 20), pady=(10, 10))
+        self.nextEtage.grid(row=6, column=0, padx=(20, 20), pady=(10, 10))
+
+        self.nextEtage = customtkinter.CTkButton(master=self.groupEtage2_Frame, text="Next Round", text_color=("gray10", "#DCE4EE"), command=self.sixteenround)
+        self.nextEtage.grid(row=6, column=1, padx=(20, 20), pady=(10, 10))
+
 
         #Frame to add Teams
         self.AddTeams_Frame = tkinter.Frame(self)
@@ -1221,7 +1225,7 @@ class App(customtkinter.CTk):
             self.select_frame_by_name("groupEtage")
 
         self.saveButton = customtkinter.CTkButton(master=self.AddTeams2_Frame, text="Save", text_color=("gray10", "#DCE4EE"), command=SaveTeams)
-        self.saveButton.grid(row=4, column=2, columnspan=2, padx=(20, 10), pady=(10, 20), sticky="nsew")
+        self.saveButton.grid(row=4, column=0,padx=(20, 10), pady=(10, 20), sticky="nsew")
 
         #16 round Frame
         self.sixteenround_Frame = customtkinter.CTkFrame(self)
