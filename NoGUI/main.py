@@ -151,6 +151,7 @@ def app() -> None:
                     print("Introduce the score:")
                     team_a = matches_temp[int(match_input) - 1][: matches_temp[int(match_input) - 1].find("VS")].strip()
                     team_b = matches_temp[int(match_input) - 1][matches_temp[int(match_input) - 1].find("VS") + 2:].strip()
+                    print(matches_temp[int(match_input) - 1])
                     score_input_A = int(input(team_a + ": "))
                     score_input_B = int(input(team_b + ": "))
                     match_results(groups, group_input, team_a, team_b, score_input_A, score_input_B)
@@ -167,7 +168,7 @@ def app() -> None:
                     print("Introduce a score: ")
                     #no tengo tiempo de hacerlo mas bonito y elegante, tons se aguantan
                     length = len(octavos.round_teams())
-                    for i in range(length / 2):
+                    for i in range(length // 2):
                         print(i, ".", octavos.round_teams()[i].country_getter(), "VS", octavos.round_teams()[length - i - 1].country_getter())
                     match_input = input("Option: ")
                     if match_input == "1":
@@ -221,7 +222,7 @@ def app() -> None:
                 if select_2 == "3":
                     print("Introduce a score: ")
                     length = len(cuartos.round_teams())
-                    for i in range(length / 2):
+                    for i in range(length // 2):
                         print(i, ".", cuartos.round_teams()[i].country_getter(), "VS", cuartos.round_teams()[length - i - 1].country_getter())
                     match_input = input("Option: ")
                     if match_input == "1":
@@ -255,7 +256,7 @@ def app() -> None:
                 if select_2 == "4":
                     print("Introduce a score: ")
                     length = len(semi.round_teams())
-                    for i in range(length / 2):
+                    for i in range(length // 2):
                         print(i, ".", semi.round_teams()[i].country_getter(), "VS", semi.round_teams()[length - i - 1].country_getter())
                     match_input = input("Option: ")
                     if match_input == "1":
